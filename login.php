@@ -4,3 +4,10 @@
 	<button type="submit" name="acce">Entrar</button>
 	<button type="button" onclick="">Registrarme</button>  
 </form>
+<?php
+	if(isset($error)){
+		echo "ERROR: " . $error;
+		echo "<br/><br/>";
+	}
+echo "</div>";
+?>		
