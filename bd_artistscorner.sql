@@ -3,11 +3,13 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-02-2016 a las 12:58:41
+-- Tiempo de generación: 26-02-2016 a las 13:47:25
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -27,7 +29,10 @@ USE `bd_artistscorner`;
 --
 -- Estructura de tabla para la tabla `tbl_comentarioseventos`
 --
+-- Creación: 26-02-2016 a las 11:13:05
+--
 
+DROP TABLE IF EXISTS `tbl_comentarioseventos`;
 CREATE TABLE IF NOT EXISTS `tbl_comentarioseventos` (
   `id_Comentarios` int(11) NOT NULL,
   `Comentario` text COLLATE utf8_bin,
@@ -35,12 +40,19 @@ CREATE TABLE IF NOT EXISTS `tbl_comentarioseventos` (
   `id_Evento` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+--
+-- RELACIONES PARA LA TABLA `tbl_comentarioseventos`:
+--
+
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `tbl_cometariosobra`
 --
+-- Creación: 26-02-2016 a las 11:13:05
+--
 
+DROP TABLE IF EXISTS `tbl_cometariosobra`;
 CREATE TABLE IF NOT EXISTS `tbl_cometariosobra` (
   `id_comentario` int(11) NOT NULL,
   `comentario` text COLLATE utf8_bin,
@@ -48,17 +60,28 @@ CREATE TABLE IF NOT EXISTS `tbl_cometariosobra` (
   `id_Obra` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+--
+-- RELACIONES PARA LA TABLA `tbl_cometariosobra`:
+--
+
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `tbl_estilo`
 --
+-- Creación: 26-02-2016 a las 11:13:05
+--
 
+DROP TABLE IF EXISTS `tbl_estilo`;
 CREATE TABLE IF NOT EXISTS `tbl_estilo` (
   `id_Estilo` int(11) NOT NULL,
   `Nombre_Arte` enum('Música','Pintura','Literatura','Audiovisuales') COLLATE utf8_bin DEFAULT NULL,
   `Nombre_Genero` enum('ArtDecó','Barroco','Expresionismo','Futurismo','Gótico','Historicista','Modernismo','MovimientoModerno','Neoclasismo','Neogótico','Postmodernismo','Renacimiento','Rococó','Romántico','Ballet','Capoeira','HipHop','Salsa','Swing','Folclórica','Salón','Deportiva','Mambo','Funky','Estatua','Relieves','Busto','Torso','Criselefantina','Arquitectónica','Cinética','Rock N` Roll','Pop','Electrónica','Rap','Reggae','Heavy Metal','Reggaeton','Blues','Alternativo','Jazz','Punk','Grunge','House','Comedia','Musical','Pantomima','Performance','Improvisación','Sombras','TiteresMarionetas','Politico','Infantil','Cuentacuentos','Experimental','abstracto','Cubismo','Dadaísmo','Expresionismo','Hiperrealista','Impresionista','Realismo','Romanticismo','Prerrafaelismo','Oda','Tragedia','Melodrama','Tragicomedia','Farsa','Ensayo','Biografia','Cronica','Epistola','Fábula','Poema','Tratado','Novela','Drama','Acción','Aventura','Terror','CienciaFicción','Suspense','Fantasía','Histórico') COLLATE utf8_bin DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=90 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- RELACIONES PARA LA TABLA `tbl_estilo`:
+--
 
 --
 -- Volcado de datos para la tabla `tbl_estilo`
@@ -115,12 +138,19 @@ INSERT INTO `tbl_estilo` (`id_Estilo`, `Nombre_Arte`, `Nombre_Genero`) VALUES
 --
 -- Estructura de tabla para la tabla `tbl_estilo_obra`
 --
+-- Creación: 26-02-2016 a las 11:13:05
+--
 
+DROP TABLE IF EXISTS `tbl_estilo_obra`;
 CREATE TABLE IF NOT EXISTS `tbl_estilo_obra` (
   `id_Estilo_Obra` int(11) NOT NULL,
   `id_Obra` int(11) DEFAULT NULL,
   `id_Estilo` int(11) DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- RELACIONES PARA LA TABLA `tbl_estilo_obra`:
+--
 
 --
 -- Volcado de datos para la tabla `tbl_estilo_obra`
@@ -138,7 +168,10 @@ INSERT INTO `tbl_estilo_obra` (`id_Estilo_Obra`, `id_Obra`, `id_Estilo`) VALUES
 --
 -- Estructura de tabla para la tabla `tbl_eventos`
 --
+-- Creación: 26-02-2016 a las 11:13:05
+--
 
+DROP TABLE IF EXISTS `tbl_eventos`;
 CREATE TABLE IF NOT EXISTS `tbl_eventos` (
   `id_Eventos` int(11) NOT NULL,
   `nombre` varchar(20) COLLATE utf8_bin DEFAULT NULL,
@@ -148,24 +181,38 @@ CREATE TABLE IF NOT EXISTS `tbl_eventos` (
   `lugar` int(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+--
+-- RELACIONES PARA LA TABLA `tbl_eventos`:
+--
+
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `tbl_likes`
 --
+-- Creación: 26-02-2016 a las 11:13:05
+--
 
+DROP TABLE IF EXISTS `tbl_likes`;
 CREATE TABLE IF NOT EXISTS `tbl_likes` (
   `id_like` int(11) NOT NULL,
   `id_Obra` int(11) DEFAULT NULL,
   `usuario` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+--
+-- RELACIONES PARA LA TABLA `tbl_likes`:
+--
+
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `tbl_obra`
 --
+-- Creación: 26-02-2016 a las 11:19:56
+--
 
+DROP TABLE IF EXISTS `tbl_obra`;
 CREATE TABLE IF NOT EXISTS `tbl_obra` (
   `id_Obra` int(11) NOT NULL,
   `titulo` varchar(100) COLLATE utf8_bin DEFAULT NULL,
@@ -178,6 +225,10 @@ CREATE TABLE IF NOT EXISTS `tbl_obra` (
   `portada` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `likes` int(11) DEFAULT '0'
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- RELACIONES PARA LA TABLA `tbl_obra`:
+--
 
 --
 -- Volcado de datos para la tabla `tbl_obra`
@@ -195,24 +246,38 @@ INSERT INTO `tbl_obra` (`id_Obra`, `titulo`, `Arte`, `num_Descargas`, `archivo`,
 --
 -- Estructura de tabla para la tabla `tbl_tagnube`
 --
+-- Creación: 26-02-2016 a las 11:13:05
+--
 
+DROP TABLE IF EXISTS `tbl_tagnube`;
 CREATE TABLE IF NOT EXISTS `tbl_tagnube` (
   `id_tagnube` int(11) NOT NULL,
   `tag` text COLLATE utf8_bin,
   `id_Obra` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+--
+-- RELACIONES PARA LA TABLA `tbl_tagnube`:
+--
+
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `tbl_tipousuario`
 --
+-- Creación: 26-02-2016 a las 11:13:05
+--
 
+DROP TABLE IF EXISTS `tbl_tipousuario`;
 CREATE TABLE IF NOT EXISTS `tbl_tipousuario` (
   `id_TipoUsuario` int(11) NOT NULL,
   `nombreTipousuario` varchar(20) COLLATE utf8_bin DEFAULT NULL,
   `descripcion` text COLLATE utf8_bin
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- RELACIONES PARA LA TABLA `tbl_tipousuario`:
+--
 
 --
 -- Volcado de datos para la tabla `tbl_tipousuario`
@@ -227,7 +292,10 @@ INSERT INTO `tbl_tipousuario` (`id_TipoUsuario`, `nombreTipousuario`, `descripci
 --
 -- Estructura de tabla para la tabla `tbl_usuario`
 --
+-- Creación: 26-02-2016 a las 12:46:37
+--
 
+DROP TABLE IF EXISTS `tbl_usuario`;
 CREATE TABLE IF NOT EXISTS `tbl_usuario` (
   `id_Usuario` int(11) NOT NULL,
   `usuario` varchar(15) COLLATE utf8_bin DEFAULT NULL,
@@ -237,18 +305,23 @@ CREATE TABLE IF NOT EXISTS `tbl_usuario` (
   `pass` varchar(15) COLLATE utf8_bin DEFAULT NULL,
   `descripcionUser` text COLLATE utf8_bin,
   `imagen` varchar(100) COLLATE utf8_bin DEFAULT NULL,
-  `id_TipoUsuario` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `id_TipoUsuario` int(11) DEFAULT '2'
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- RELACIONES PARA LA TABLA `tbl_usuario`:
+--
 
 --
 -- Volcado de datos para la tabla `tbl_usuario`
 --
 
 INSERT INTO `tbl_usuario` (`id_Usuario`, `usuario`, `nombre`, `apellido`, `mail`, `pass`, `descripcionUser`, `imagen`, `id_TipoUsuario`) VALUES
-(1, 'Admin', 'Admin', NULL, '8706.joan23@fje.edu', '1234', 'Usuario webmaster', NULL, 1),
-(2, 'Jose', 'Jose Luis', 'Maseda', '33595.joan23@fje.edu', '1234', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In elit augue, pellentesque et dapibus at, tempus euismod justo. Donec eget enim volutpat, rhoncus dui at, condimentum dui. Aenean viverra tortor eget lacinia congue. Pellentesque vestibulum, tellus vitae commodo aliquet, dolor nisi maximus diam, eu sodales eros lectus ac massa. Aliquam iaculis rutrum euismod. Mauris metus quam, ullamcorper ac consectetur id, sagittis vitae ligula. Aliquam sem ex, pharetra vitae sagittis nec, vestibulum sollicitudin magna. Morbi et pretium nulla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ac euismod velit. Mauris venenatis mattis aliquam. Donec cursus interdum felis, sed imperdiet tellus.', 'imagen1.jpg', 2),
-(3, 'Alejan', 'Alejandro', 'Moreno', '96034.joan23@fje.edu', '1234', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In elit augue, pellentesque et dapibus at, tempus euismod justo. Donec eget enim volutpat, rhoncus dui at, condimentum dui. Aenean viverra tortor eget lacinia congue. Pellentesque vestibulum, tellus vitae commodo aliquet, dolor nisi maximus diam, eu sodales eros lectus ac massa. Aliquam iaculis rutrum euismod. Mauris metus quam, ullamcorper ac consectetur id, sagittis vitae ligula. Aliquam sem ex, pharetra vitae sagittis nec, vestibulum sollicitudin magna. Morbi et pretium nulla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ac euismod velit. Mauris venenatis mattis aliquam. Donec cursus interdum felis, sed imperdiet tellus.', 'imagen1.jpg', 2),
-(4, 'Ronin', 'Eric', 'Sanchez', 'sanchezChertoEric@gmail.com', '1234', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In elit augue, pellentesque et dapibus at, tempus euismod justo. Donec eget enim volutpat, rhoncus dui at, condimentum dui. Aenean viverra tortor eget lacinia congue. Pellentesque vestibulum, tellus vitae commodo aliquet, dolor nisi maximus diam, eu sodales eros lectus ac massa. Aliquam iaculis rutrum euismod. Mauris metus quam, ullamcorper ac consectetur id, sagittis vitae ligula. Aliquam sem ex, pharetra vitae sagittis nec, vestibulum sollicitudin magna. Morbi et pretium nulla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ac euismod velit. Mauris venenatis mattis aliquam. Donec cursus interdum felis, sed imperdiet tellus.', 'imagen1.jpg', 2);
+(1, 'Admin', 'Admin', NULL, '8706.joan23@fje.edu', '1234', NULL, NULL, 1),
+(2, 'Jose', 'Jose Luis', 'Maseda', '33595.joan23@fje.edu', '1234', NULL, 'imagen1.jpg', 2),
+(3, 'Alejan', 'Alejandro', 'Moreno', '96034.joan23@fje.edu', '1234', NULL, 'imagen1.jpg', 2),
+(4, 'Ronin', 'Eric', 'Sanchez', 'sanchezChertoEric@gmail.com', '1234', NULL, 'imagen1.jpg', 2),
+(6, 'elmanu19', 'manuel', 'perez sanchez', 'manu@gmail.com', '1234', NULL, '', 2);
 
 --
 -- Índices para tablas volcadas
@@ -392,7 +465,8 @@ ALTER TABLE `tbl_tipousuario`
 -- AUTO_INCREMENT de la tabla `tbl_usuario`
 --
 ALTER TABLE `tbl_usuario`
-  MODIFY `id_Usuario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id_Usuario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
