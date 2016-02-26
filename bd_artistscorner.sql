@@ -3,13 +3,11 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-02-2016 a las 12:04:04
+-- Tiempo de generación: 26-02-2016 a las 12:58:41
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -29,10 +27,7 @@ USE `bd_artistscorner`;
 --
 -- Estructura de tabla para la tabla `tbl_comentarioseventos`
 --
--- Creación: 26-02-2016 a las 07:25:32
---
 
-DROP TABLE IF EXISTS `tbl_comentarioseventos`;
 CREATE TABLE IF NOT EXISTS `tbl_comentarioseventos` (
   `id_Comentarios` int(11) NOT NULL,
   `Comentario` text COLLATE utf8_bin,
@@ -40,21 +35,12 @@ CREATE TABLE IF NOT EXISTS `tbl_comentarioseventos` (
   `id_Evento` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
---
--- RELACIONES PARA LA TABLA `tbl_comentarioseventos`:
---   `id_Evento`
---       `tbl_eventos` -> `id_Eventos`
---
-
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `tbl_cometariosobra`
 --
--- Creación: 26-02-2016 a las 07:25:32
---
 
-DROP TABLE IF EXISTS `tbl_cometariosobra`;
 CREATE TABLE IF NOT EXISTS `tbl_cometariosobra` (
   `id_comentario` int(11) NOT NULL,
   `comentario` text COLLATE utf8_bin,
@@ -62,30 +48,17 @@ CREATE TABLE IF NOT EXISTS `tbl_cometariosobra` (
   `id_Obra` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
---
--- RELACIONES PARA LA TABLA `tbl_cometariosobra`:
---   `id_Obra`
---       `tbl_obra` -> `id_Obra`
---
-
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `tbl_estilo`
 --
--- Creación: 26-02-2016 a las 07:25:32
---
 
-DROP TABLE IF EXISTS `tbl_estilo`;
 CREATE TABLE IF NOT EXISTS `tbl_estilo` (
   `id_Estilo` int(11) NOT NULL,
   `Nombre_Arte` enum('Música','Pintura','Literatura','Audiovisuales') COLLATE utf8_bin DEFAULT NULL,
   `Nombre_Genero` enum('ArtDecó','Barroco','Expresionismo','Futurismo','Gótico','Historicista','Modernismo','MovimientoModerno','Neoclasismo','Neogótico','Postmodernismo','Renacimiento','Rococó','Romántico','Ballet','Capoeira','HipHop','Salsa','Swing','Folclórica','Salón','Deportiva','Mambo','Funky','Estatua','Relieves','Busto','Torso','Criselefantina','Arquitectónica','Cinética','Rock N` Roll','Pop','Electrónica','Rap','Reggae','Heavy Metal','Reggaeton','Blues','Alternativo','Jazz','Punk','Grunge','House','Comedia','Musical','Pantomima','Performance','Improvisación','Sombras','TiteresMarionetas','Politico','Infantil','Cuentacuentos','Experimental','abstracto','Cubismo','Dadaísmo','Expresionismo','Hiperrealista','Impresionista','Realismo','Romanticismo','Prerrafaelismo','Oda','Tragedia','Melodrama','Tragicomedia','Farsa','Ensayo','Biografia','Cronica','Epistola','Fábula','Poema','Tratado','Novela','Drama','Acción','Aventura','Terror','CienciaFicción','Suspense','Fantasía','Histórico') COLLATE utf8_bin DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=90 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- RELACIONES PARA LA TABLA `tbl_estilo`:
---
 
 --
 -- Volcado de datos para la tabla `tbl_estilo`
@@ -142,23 +115,12 @@ INSERT INTO `tbl_estilo` (`id_Estilo`, `Nombre_Arte`, `Nombre_Genero`) VALUES
 --
 -- Estructura de tabla para la tabla `tbl_estilo_obra`
 --
--- Creación: 26-02-2016 a las 07:25:32
---
 
-DROP TABLE IF EXISTS `tbl_estilo_obra`;
 CREATE TABLE IF NOT EXISTS `tbl_estilo_obra` (
   `id_Estilo_Obra` int(11) NOT NULL,
   `id_Obra` int(11) DEFAULT NULL,
   `id_Estilo` int(11) DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- RELACIONES PARA LA TABLA `tbl_estilo_obra`:
---   `id_Estilo`
---       `tbl_estilo` -> `id_Estilo`
---   `id_Obra`
---       `tbl_obra` -> `id_Obra`
---
 
 --
 -- Volcado de datos para la tabla `tbl_estilo_obra`
@@ -176,10 +138,7 @@ INSERT INTO `tbl_estilo_obra` (`id_Estilo_Obra`, `id_Obra`, `id_Estilo`) VALUES
 --
 -- Estructura de tabla para la tabla `tbl_eventos`
 --
--- Creación: 26-02-2016 a las 07:25:32
---
 
-DROP TABLE IF EXISTS `tbl_eventos`;
 CREATE TABLE IF NOT EXISTS `tbl_eventos` (
   `id_Eventos` int(11) NOT NULL,
   `nombre` varchar(20) COLLATE utf8_bin DEFAULT NULL,
@@ -189,60 +148,36 @@ CREATE TABLE IF NOT EXISTS `tbl_eventos` (
   `lugar` int(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
---
--- RELACIONES PARA LA TABLA `tbl_eventos`:
---   `Id_Usuario`
---       `tbl_usuario` -> `id_Usuario`
---
-
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `tbl_likes`
 --
--- Creación: 26-02-2016 a las 07:25:32
---
 
-DROP TABLE IF EXISTS `tbl_likes`;
 CREATE TABLE IF NOT EXISTS `tbl_likes` (
   `id_like` int(11) NOT NULL,
   `id_Obra` int(11) DEFAULT NULL,
   `usuario` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
---
--- RELACIONES PARA LA TABLA `tbl_likes`:
---   `id_Obra`
---       `tbl_obra` -> `id_Obra`
---
-
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `tbl_obra`
 --
--- Creación: 26-02-2016 a las 07:25:32
---
 
-DROP TABLE IF EXISTS `tbl_obra`;
 CREATE TABLE IF NOT EXISTS `tbl_obra` (
   `id_Obra` int(11) NOT NULL,
-  `titulo` varchar(20) COLLATE utf8_bin DEFAULT NULL,
+  `titulo` varchar(100) COLLATE utf8_bin DEFAULT NULL,
   `Arte` enum('Musica','Pintura','Literatura','Audiovisuales') COLLATE utf8_bin DEFAULT NULL,
-  `num_Descargas` int(11) DEFAULT NULL,
-  `archivo` varchar(100) COLLATE utf8_bin DEFAULT NULL,
+  `num_Descargas` int(11) DEFAULT '0',
+  `archivo` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `descripcion` text COLLATE utf8_bin,
   `id_Usuario` int(11) DEFAULT NULL,
   `fecha` date DEFAULT NULL,
-  `portada` varchar(15) COLLATE utf8_bin DEFAULT NULL,
-  `likes` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- RELACIONES PARA LA TABLA `tbl_obra`:
---   `id_Usuario`
---       `tbl_usuario` -> `id_Usuario`
---
+  `portada` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `likes` int(11) DEFAULT '0'
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Volcado de datos para la tabla `tbl_obra`
@@ -251,47 +186,33 @@ CREATE TABLE IF NOT EXISTS `tbl_obra` (
 INSERT INTO `tbl_obra` (`id_Obra`, `titulo`, `Arte`, `num_Descargas`, `archivo`, `descripcion`, `id_Usuario`, `fecha`, `portada`, `likes`) VALUES
 (3, 'The Bridge', 'Musica', 124, 'cancion1.mp3', 'Canción "the Bridge" ', 2, '2016-02-03', 'imagen1.jpg', 150),
 (4, 'El cencerro', 'Pintura', 124, 'imagen2.jpg', 'Con esta escultura he intentado plasmar el maltrato animal en las granjas modernas.', 2, '2016-02-03', '', 140),
-(5, 'El cencerro', 'Pintura', 124, 'imagen2.jpg', 'Con esta escultura he intentado plasmar el maltrato animal en las granjas modernas.', 2, '2016-02-03', 'imagen1.jpg', 140);
+(5, 'El cencerro', 'Pintura', 124, 'imagen2.jpg', 'Con esta escultura he intentado plasmar el maltrato animal en las granjas modernas.', 2, '2016-02-03', 'imagen1.jpg', 140),
+(8, 'algo', NULL, 0, '{9E80B24F-DBE8-39CA-9D1E-1BB089B6A728}.png', 'cosas', NULL, NULL, NULL, 0),
+(12, 'algo', NULL, 0, '{1DF4BC30-2573-4D31-5AE9-A97B91A65B49}.png', 'red con portada', NULL, '2016-02-26', 'DEATH_NOTE_L_wallpaper-1-.jpg', 0);
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `tbl_tagnube`
 --
--- Creación: 26-02-2016 a las 07:25:32
---
 
-DROP TABLE IF EXISTS `tbl_tagnube`;
 CREATE TABLE IF NOT EXISTS `tbl_tagnube` (
   `id_tagnube` int(11) NOT NULL,
   `tag` text COLLATE utf8_bin,
   `id_Obra` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
---
--- RELACIONES PARA LA TABLA `tbl_tagnube`:
---   `id_Obra`
---       `tbl_obra` -> `id_Obra`
---
-
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `tbl_tipousuario`
 --
--- Creación: 26-02-2016 a las 07:25:32
---
 
-DROP TABLE IF EXISTS `tbl_tipousuario`;
 CREATE TABLE IF NOT EXISTS `tbl_tipousuario` (
   `id_TipoUsuario` int(11) NOT NULL,
   `nombreTipousuario` varchar(20) COLLATE utf8_bin DEFAULT NULL,
   `descripcion` text COLLATE utf8_bin
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- RELACIONES PARA LA TABLA `tbl_tipousuario`:
---
 
 --
 -- Volcado de datos para la tabla `tbl_tipousuario`
@@ -306,10 +227,7 @@ INSERT INTO `tbl_tipousuario` (`id_TipoUsuario`, `nombreTipousuario`, `descripci
 --
 -- Estructura de tabla para la tabla `tbl_usuario`
 --
--- Creación: 26-02-2016 a las 07:25:32
---
 
-DROP TABLE IF EXISTS `tbl_usuario`;
 CREATE TABLE IF NOT EXISTS `tbl_usuario` (
   `id_Usuario` int(11) NOT NULL,
   `usuario` varchar(15) COLLATE utf8_bin DEFAULT NULL,
@@ -321,12 +239,6 @@ CREATE TABLE IF NOT EXISTS `tbl_usuario` (
   `imagen` varchar(100) COLLATE utf8_bin DEFAULT NULL,
   `id_TipoUsuario` int(11) DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- RELACIONES PARA LA TABLA `tbl_usuario`:
---   `id_TipoUsuario`
---       `tbl_tipousuario` -> `id_TipoUsuario`
---
 
 --
 -- Volcado de datos para la tabla `tbl_usuario`
@@ -465,7 +377,7 @@ ALTER TABLE `tbl_likes`
 -- AUTO_INCREMENT de la tabla `tbl_obra`
 --
 ALTER TABLE `tbl_obra`
-  MODIFY `id_Obra` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `id_Obra` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT de la tabla `tbl_tagnube`
 --
@@ -480,8 +392,7 @@ ALTER TABLE `tbl_tipousuario`
 -- AUTO_INCREMENT de la tabla `tbl_usuario`
 --
 ALTER TABLE `tbl_usuario`
-  MODIFY `id_Usuario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;COMMIT;
-
+  MODIFY `id_Usuario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
