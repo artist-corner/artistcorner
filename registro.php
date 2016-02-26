@@ -1,4 +1,4 @@
-<form name="f1" action="" method="post" onSubmit="return enviar;">
+<form name="f1" action="registro.proc.php" method="post" onSubmit="return enviar;">
 		<table>
 			<tr>
 				<td>Nombre: </td>
@@ -10,7 +10,7 @@
 			</tr>
 			<tr>
 				<td>Usuario:</td>
-				<td><input type="text" name="nom" placeholder="Usuario" required/></td>
+				<td><input type="text" name="user" placeholder="Usuario" required/></td>
 			</tr>
 			<tr>
 				<td>Contraseña: </td>
@@ -24,6 +24,10 @@
 				<td>Correo</td>
 				<td><input type="text" name="mail" placeholder="ejemplo@ejemplo.com" required/></td>
 			</tr>
+			<tr>
+				<td>Descripción</td>
+				<td><textarea name="desc" rows="4" cols="50"></textarea></td>
+			</td>
 			<tr>
 				<td>Foto</td>
 				<td><input type="file" name="foto"><td>
