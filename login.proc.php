@@ -20,7 +20,7 @@
 		$_SESSION['mail']=$_REQUEST['mail'];
 		$_SESSION['nombre']=$datos_usuario['nombre'];
 		$_SESSION['nivel']=$datos_usuario['id_TipoUsuario'];
-		$_SESSION['usuario']=$datos_usuario['usuario']
+		$_SESSION['usuario']=$datos_usuario['usuario'];
 
 		//redirigimos a la página principal
 		header("location: index.php");
