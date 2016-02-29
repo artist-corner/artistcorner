@@ -14,17 +14,19 @@
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 
-		<!-- BORRAR -->
+<!-- Cambiar Conex -->
 		<?php
 		$con = mysqli_connect('localhost', 'root', '', 'bd_artistscorner');
+		// include 'conexion.proc.php';
 		?>
+		
 	</head>
 	<body>
 		<?php
 
 //Sentencia SQL TBL USUARIO TIPOUSUARIO OBRA
 		$sql = "SELECT tbl_usuario.*, tbl_tipousuario.* FROM tbl_usuario INNER JOIN tbl_tipousuario ON tbl_usuario.id_TipoUsuario = tbl_tipousuario.id_TipoUsuario WHERE tbl_usuario.id_Usuario =$_REQUEST[namePerfil]";
-		$sql2 = "SELECT tbl_usuario.*, tbl_obra.* FROM tbl_usuario INNER JOIN tbl_obra ON tbl_usuario.id_Usuario = tbl_obra.id_Usuario WHERE tbl_usuario.id_Usuario =$_REQUEST[namePerfil]";
+		$sql2 = "SELECT tbl_usuario.*, tbl_obra.*, tbl_estilo_arte.*, tbl_arte.* FROM tbl_usuario INNER JOIN tbl_obra ON tbl_usuario.id_Usuario = tbl_obra.id_Usuario INNER JOIN tbl_estilo_arte ON tbl_obra.id_Estilo_Arte = tbl_estilo_arte.id_Estilo_Arte INNER JOIN tbl_arte ON tbl_estilo_arte.id_Arte = tbl_arte.id_Arte WHERE tbl_usuario.id_Usuario = $_REQUEST[namePerfil]";
 			$datos = mysqli_query($con, $sql);
 			$datos2 = mysqli_query($con, $sql2);
 			$prod = mysqli_fetch_array($datos);
@@ -80,7 +82,7 @@
 											}else{
 											echo "<div><a href='obra.php?id_obra=$prod2[id_Obra]' class='image fit'><img src='images/$prod2[portada]' alt=''></a></div>";
 											};
-											echo "<div class='piedeimagen'>$prod2[titulo] / $prod2[Arte]</div>";
+											echo "<div class='piedeimagen'>$prod2[titulo] / $prod2[nombre_Arte]</div>";
 											echo "</div>";
 											
 										};
