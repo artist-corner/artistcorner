@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-02-2016 a las 11:58:43
+-- Tiempo de generación: 29-02-2016 a las 12:25:26
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -101,13 +101,13 @@ CREATE TABLE IF NOT EXISTS `tbl_cometariosobra` (
 --
 -- Estructura de tabla para la tabla `tbl_estilo`
 --
--- Creación: 29-02-2016 a las 10:18:16
+-- Creación: 29-02-2016 a las 11:24:49
 --
 
 DROP TABLE IF EXISTS `tbl_estilo`;
 CREATE TABLE IF NOT EXISTS `tbl_estilo` (
   `id_Estilo` int(11) NOT NULL,
-  `Nombre_Genero` varchar(40) COLLATE utf8_bin DEFAULT NULL
+  `Nombre_Estilo` varchar(40) COLLATE utf8_bin DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=90 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
@@ -118,7 +118,7 @@ CREATE TABLE IF NOT EXISTS `tbl_estilo` (
 -- Volcado de datos para la tabla `tbl_estilo`
 --
 
-INSERT INTO `tbl_estilo` (`id_Estilo`, `Nombre_Genero`) VALUES
+INSERT INTO `tbl_estilo` (`id_Estilo`, `Nombre_Estilo`) VALUES
 (33, 'Rock N` Roll'),
 (34, 'Pop'),
 (35, 'Electrónica'),
