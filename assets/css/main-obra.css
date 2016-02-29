@@ -8,10 +8,21 @@
 */
 
 /* Reset */
-
-	.inner{
+	.wrap{
+		display: flex;
+		flex-wrap: wrap;
+		height: 100%;
 		position: absolute;
-    	top: 0;	
+	}
+	.inner{
+		background-color: red;
+		position: inline-block;
+	}
+	.img{
+		background-color: green;
+		height: 100%;
+		margin: 0 auto;
+
 	}
 	html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
 		margin: 0;
@@ -2815,7 +2826,8 @@
 					}
 
 		#header.alt {
-			background-color: transparent;
+			/*background-color: transparent;*/
+			background-color: red
 		}
 
 			#header.alt h1 {
@@ -2924,7 +2936,7 @@
 	}
 
 		#menu .inner {
-			padding: 2.5em 1.5em 0.5em 1.5em ;
+			padding: 3em 1.5em 0.5em 1.5em ;
 			-moz-transform: translateY(0.5em);
 			-webkit-transform: translateY(0.5em);
 			-ms-transform: translateY(0.5em);
@@ -3034,7 +3046,7 @@
 /* Banner */
 
 	#banner {
-		padding: 10em 0 4.75em 0 ;
+		padding: 3em 0 0em 0 ;
 	}
 
 		#banner .inner {
@@ -3121,7 +3133,7 @@
 		@media screen and (max-width: 1280px) {
 
 			#banner {
-				padding: 7em 0 8.25em 0 ;
+				padding: 3em 0 0em 0 ;
 				background-color: #2e3141;
 				background-image: linear-gradient(to top, rgba(46, 49, 65, 0.8), rgba(46, 49, 65, 0.8)), url("../../images/bg.jpg");
 				background-size: auto, cover;
@@ -3134,7 +3146,7 @@
 		@media screen and (max-width: 980px) {
 
 			#banner {
-				padding: 0em 3em 12.375em 3em ;
+				padding: 3em 3em 12.375em 3em ;
 				margin-bottom: -4.75em;
 			}
 
@@ -3147,7 +3159,7 @@
 		@media screen and (max-width: 736px) {
 
 			#banner {
-				padding: 5em 2em 4.25em 2em ;
+				padding: 3em 2em 4.25em 2em ;
 				margin-bottom: -2.5em;
 			}
 
