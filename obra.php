@@ -16,7 +16,7 @@
 	</head>
 	<body>
 		<?php
-			iclude("header.php");
+			include("header.php");
 		?>
 			
 				<!-- Banner -->
