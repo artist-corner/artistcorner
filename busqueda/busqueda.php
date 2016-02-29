@@ -81,8 +81,8 @@
 					// CAMPO BUSQUEDA ESTE VACIO
 			    case 1:
 			        // echo "Todos";
-			        $sql = "SELECT tbl_usuario.* FROM tbl_usuario ORDER BY usuario desc limit 30";
-			        $sql2 = "SELECT tbl_obra.*, tbl_usuario.* FROM tbl_obra INNER JOIN tbl_usuario ON tbl_obra.id_Usuario=tbl_usuario.id_Usuario ORDER BY tbl_obra.titulo desc limit 30";
+			        $sql = "SELECT tbl_usuario.* FROM tbl_usuario ORDER BY usuario asc limit 30";
+			        $sql2 = "SELECT tbl_obra.*, tbl_usuario.* FROM tbl_obra INNER JOIN tbl_usuario ON tbl_obra.id_Usuario=tbl_usuario.id_Usuario ORDER BY tbl_obra.titulo asc limit 30";
 			        $datos = mysqli_query($con, $sql);
 					$datos2 = mysqli_query($con, $sql2);
 			        break;
