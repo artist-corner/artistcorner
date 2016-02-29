@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-02-2016 a las 20:26:45
+-- Tiempo de generación: 29-02-2016 a las 20:44:14
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -172,6 +172,10 @@ CREATE TABLE IF NOT EXISTS `tbl_estilo_arte` (
 
 --
 -- RELACIONES PARA LA TABLA `tbl_estilo_arte`:
+--   `id_Arte`
+--       `tbl_arte` -> `id_Arte`
+--   `id_Estilo`
+--       `tbl_estilo` -> `id_Estilo`
 --
 
 --
@@ -315,6 +319,8 @@ CREATE TABLE IF NOT EXISTS `tbl_obra` (
 -- RELACIONES PARA LA TABLA `tbl_obra`:
 --   `id_Arte`
 --       `tbl_arte` -> `id_Arte`
+--   `id_Estilo_Arte`
+--       `tbl_estilo_arte` -> `id_Estilo_Arte`
 --   `id_Usuario`
 --       `tbl_usuario` -> `id_Usuario`
 --
@@ -356,7 +362,7 @@ CREATE TABLE IF NOT EXISTS `tbl_tagnube` (
 --
 -- Estructura de tabla para la tabla `tbl_tipousuario`
 --
--- Creación: 29-02-2016 a las 17:57:11
+-- Creación: 29-02-2016 a las 19:41:28
 --
 
 DROP TABLE IF EXISTS `tbl_tipousuario`;
@@ -383,7 +389,7 @@ INSERT INTO `tbl_tipousuario` (`id_TipoUsuario`, `nombreTipousuario`, `descripci
 --
 -- Estructura de tabla para la tabla `tbl_usuario`
 --
--- Creación: 29-02-2016 a las 17:57:11
+-- Creación: 29-02-2016 a las 19:41:28
 --
 
 DROP TABLE IF EXISTS `tbl_usuario`;
