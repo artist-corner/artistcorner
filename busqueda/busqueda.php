@@ -200,11 +200,11 @@
 									$usercarp = "$prod2[usuario]";
 									if($prod2['portada'] !== NULL){
 									 $PortadaObra=$prod2['portada'];
-										echo " <a href='seleccionbusquedas.php?nameObra=$prod2[id_Obra]' class='image2'><img src='../usuarios/$usercarp/obras/$PortadaObra' alt='' /></a>";
+										echo " <a href='../obra/obra.php?id_obra=$prod2[id_Obra]' class='image2'><img src='../usuarios/$usercarp/obras/$PortadaObra' alt='' /></a>";
 										
 									}else{
 
-										echo " <a href='seleccionbusquedas.php?nameObra=$prod2[id_Obra]' class='image2'><img src='../img/NoImagework.png' alt='' /></a>";
+										echo " <a href='../obra/obra.php?id_obra=$prod2[id_Obra]' class='image2'><img src='../img/NoImagework.png' alt='' /></a>";
 									};
 										
 										echo "	<h2>$prod2[titulo] | $prod2[usuario] | $prod2[nombre_Arte]</h2>";

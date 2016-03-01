@@ -54,14 +54,20 @@
 								echo "<h1>$prod[usuario]</h1>";
 								echo "<p>$prod[descripcionUser]</p>";	
 								$usercarp = "$prod[usuario]";
-								$imagenUS = "$prod[imagen]";
+								
 
 								?>
 								</header>
 								<a href="#work" class="jumplink pic">
 									<span class="arrow icon fa-chevron-right"><span>See my work</span></span>
 									<?php
-									echo "<img src='../usuarios/$usercarp/img/$imagenUS' alt='' />";
+									if ($prod['imagen'] !== NULL){
+										$imagenUS = "$prod[imagen]";
+										echo "<img src='../usuarios/$usercarp/img/$imagenUS' alt='' />";
+									}else{
+										echo "<img src='../img/NoImageuser.png' alt='' />";
+									};
+									
 									?>
 								</a>
 							</article>
@@ -82,10 +88,10 @@
 											$imagenObra = "$prod2[portada]";
 											echo "<div class='4u 12u$(mobile)'>";
 											if ("$imagenObra" == NULL) {
-												echo "<div><a href='obra.php?id_obra=$prod2[id_Obra]' class='image fit'><img src='images/imagen1.jpg' alt=''></a></div>";
+												echo "<div><a href='../obra/obra.php?id_obra=$prod2[id_Obra]' class='image fit'><img src='images/imagen1.jpg' alt=''></a></div>";
 												
 											}else{
-											echo "<div><a href='obra.php?id_obra=$prod2[id_Obra]' class='image fit'><img src='../usuarios/$usercarp/obras/$imagenObra' alt=''></a></div>";
+											echo "<div><a href='../obra/obra.php?id_obra=$prod2[id_Obra]' class='image fit'><img src='../img/NoImagework.png' alt=''></a></div>";
 											};
 											echo "<div class='piedeimagen'>$prod2[titulo] / $prod2[nombre_Arte]</div>";
 											echo "</div>";
