@@ -97,15 +97,18 @@
 								<header>
 									<h2>Contact Me</h2>
 								</header>
-								<form action="#" method="post">
+								<form action="http://artistscorner.esy.es/correo.php" method="Get">
 									<div>
 										<div class="row">
 											<div class="6u 12u$(mobile)">
+												<!-- sustituir por un valor fijo(nombre de usuario de la sesion),no modificable  -->
 												<input type="text" name="name" placeholder="Name" />
 											</div>
 											<div class="6u$ 12u$(mobile)">
-												<input type="text" name="email" placeholder="Email" />
+												<!-- correo del usuario que tenga la sesion iniciada (oculto) -->
+												<input type="text" name="emailOrigen" placeholder="Email" />
 											</div>
+											<!-- añadir valor oculto(correo del usuario del perfil) name="emailDestino" -->
 											<div class="12u$">
 												<input type="text" name="subject" placeholder="Subject" />
 											</div>
