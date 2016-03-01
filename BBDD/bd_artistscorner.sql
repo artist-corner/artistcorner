@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-02-2016 a las 20:44:14
+-- Tiempo de generación: 01-03-2016 a las 08:59:15
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -29,7 +29,7 @@ USE `bd_artistscorner`;
 --
 -- Estructura de tabla para la tabla `tbl_arte`
 --
--- Creación: 29-02-2016 a las 17:57:11
+-- Creación: 29-02-2016 a las 19:46:00
 --
 
 DROP TABLE IF EXISTS `tbl_arte`;
@@ -57,7 +57,7 @@ INSERT INTO `tbl_arte` (`id_Arte`, `nombre_Arte`) VALUES
 --
 -- Estructura de tabla para la tabla `tbl_comentarioseventos`
 --
--- Creación: 29-02-2016 a las 17:57:11
+-- Creación: 29-02-2016 a las 19:46:00
 --
 
 DROP TABLE IF EXISTS `tbl_comentarioseventos`;
@@ -79,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `tbl_comentarioseventos` (
 --
 -- Estructura de tabla para la tabla `tbl_cometariosobra`
 --
--- Creación: 29-02-2016 a las 17:57:11
+-- Creación: 29-02-2016 a las 19:46:00
 --
 
 DROP TABLE IF EXISTS `tbl_cometariosobra`;
@@ -101,14 +101,14 @@ CREATE TABLE IF NOT EXISTS `tbl_cometariosobra` (
 --
 -- Estructura de tabla para la tabla `tbl_estilo`
 --
--- Creación: 29-02-2016 a las 17:57:11
+-- Creación: 29-02-2016 a las 19:46:00
 --
 
 DROP TABLE IF EXISTS `tbl_estilo`;
 CREATE TABLE IF NOT EXISTS `tbl_estilo` (
   `id_Estilo` int(11) NOT NULL,
   `Nombre_Estilo` varchar(40) COLLATE utf8_bin DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=90 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=87 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- RELACIONES PARA LA TABLA `tbl_estilo`:
@@ -160,7 +160,7 @@ INSERT INTO `tbl_estilo` (`id_Estilo`, `Nombre_Estilo`) VALUES
 --
 -- Estructura de tabla para la tabla `tbl_estilo_arte`
 --
--- Creación: 29-02-2016 a las 17:57:11
+-- Creación: 29-02-2016 a las 19:46:00
 --
 
 DROP TABLE IF EXISTS `tbl_estilo_arte`;
@@ -223,7 +223,7 @@ INSERT INTO `tbl_estilo_arte` (`id_Estilo_Arte`, `id_Arte`, `id_Estilo`) VALUES
 --
 -- Estructura de tabla para la tabla `tbl_eventos`
 --
--- Creación: 29-02-2016 a las 17:57:11
+-- Creación: 29-02-2016 a las 19:46:00
 --
 
 DROP TABLE IF EXISTS `tbl_eventos`;
@@ -247,7 +247,7 @@ CREATE TABLE IF NOT EXISTS `tbl_eventos` (
 --
 -- Estructura de tabla para la tabla `tbl_likes`
 --
--- Creación: 29-02-2016 a las 17:57:11
+-- Creación: 29-02-2016 a las 19:46:00
 --
 
 DROP TABLE IF EXISTS `tbl_likes`;
@@ -261,6 +261,8 @@ CREATE TABLE IF NOT EXISTS `tbl_likes` (
 -- RELACIONES PARA LA TABLA `tbl_likes`:
 --   `id_Obra`
 --       `tbl_obra` -> `id_Obra`
+--   `usuario`
+--       `tbl_usuario` -> `id_Usuario`
 --
 
 --
@@ -268,7 +270,7 @@ CREATE TABLE IF NOT EXISTS `tbl_likes` (
 --
 
 INSERT INTO `tbl_likes` (`id_like`, `id_Obra`, `usuario`) VALUES
-(1, 3, NULL),
+(1, 3, 3),
 (2, 5, NULL),
 (3, 3, NULL),
 (4, 3, NULL),
@@ -283,7 +285,7 @@ INSERT INTO `tbl_likes` (`id_like`, `id_Obra`, `usuario`) VALUES
 (13, 4, NULL),
 (14, 4, NULL),
 (15, 3, NULL),
-(16, 3, NULL),
+(16, 3, 3),
 (17, 4, NULL),
 (18, 3, NULL),
 (19, 8, NULL),
@@ -299,7 +301,7 @@ INSERT INTO `tbl_likes` (`id_like`, `id_Obra`, `usuario`) VALUES
 --
 -- Estructura de tabla para la tabla `tbl_obra`
 --
--- Creación: 29-02-2016 a las 19:25:52
+-- Creación: 29-02-2016 a las 19:46:00
 --
 
 DROP TABLE IF EXISTS `tbl_obra`;
@@ -341,7 +343,7 @@ INSERT INTO `tbl_obra` (`id_Obra`, `titulo`, `num_Descargas`, `archivo`, `descri
 --
 -- Estructura de tabla para la tabla `tbl_tagnube`
 --
--- Creación: 29-02-2016 a las 17:57:11
+-- Creación: 29-02-2016 a las 19:46:00
 --
 
 DROP TABLE IF EXISTS `tbl_tagnube`;
@@ -362,7 +364,7 @@ CREATE TABLE IF NOT EXISTS `tbl_tagnube` (
 --
 -- Estructura de tabla para la tabla `tbl_tipousuario`
 --
--- Creación: 29-02-2016 a las 19:41:28
+-- Creación: 29-02-2016 a las 19:46:00
 --
 
 DROP TABLE IF EXISTS `tbl_tipousuario`;
@@ -389,7 +391,7 @@ INSERT INTO `tbl_tipousuario` (`id_TipoUsuario`, `nombreTipousuario`, `descripci
 --
 -- Estructura de tabla para la tabla `tbl_usuario`
 --
--- Creación: 29-02-2016 a las 19:41:28
+-- Creación: 29-02-2016 a las 19:46:00
 --
 
 DROP TABLE IF EXISTS `tbl_usuario`;
@@ -537,7 +539,7 @@ ALTER TABLE `tbl_cometariosobra`
 -- AUTO_INCREMENT de la tabla `tbl_estilo`
 --
 ALTER TABLE `tbl_estilo`
-  MODIFY `id_Estilo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=90;
+  MODIFY `id_Estilo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=87;
 --
 -- AUTO_INCREMENT de la tabla `tbl_estilo_arte`
 --
