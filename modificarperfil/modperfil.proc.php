@@ -1,16 +1,34 @@
 <?php
-	include("conexion.proc.php");
-	$sql = "INSERT INTO tbl_usuario (usuario, nombre, apellido, mail, pass, descripcionUser, imagen) VALUES ('$_REQUEST[user]', '$_REQUEST[nombre]', '$_REQUEST[apellidos]', '$_REQUEST[mail]', '$_REQUEST[pass]', '$_REQUEST[desc]', '$_REQUEST[foto]')";
+session_start();
+	// include("conexion.proc.php");
+$con = mysqli_connect('localhost', 'root', '', 'bd_artistscorner');
+$nombre = $_REQUEST['nombre'];
+$apellido = $_REQUEST['apellidos'];
+$pass = $_REQUEST['pass'];
+$repass = $_REQUEST['repass'];
+$descripcion = $_REQUEST['desc'];
+$foto = $_REQUEST['foto'];
+if ($pass == $repass){
+	if($_REQUEST['foto'] == NULL){
+		
+	echo "no imagen";
+	$sql = "UPDATE tbl_usuario SET nombre='$nombre', apellido='$apellido', pass='$pass', descripcionUser='$descripcion' WHERE id_Usuario = $_SESSION[id]";
 	$resultado=mysqli_query($con, $sql);
-	echo $sql;
-	if ($resultado) {
-		$carpeta_user="usuarios/".$_REQUEST['user'];
-		$carpeta_img="usuarios/".$_REQUEST['user']."/img";
-		$carpeta_obras="usuarios/".$_REQUEST['user']."/obras";
-		mkdir($carpeta_user, 0700);
-		mkdir($carpeta_img, 0700);
-		mkdir($carpeta_obras, 0700);
 	}else{
-    	die('Consulta no válida: ' . mysql_error());
-	}
+	// echo " imagen";
+	$sql = "UPDATE tbl_usuario SET nombre='$nombre', apellido='$apellido', pass='$pass', descripcionUser='$descripcion', imagen='$foto' WHERE id_Usuario = $_SESSION[id]";
+	$resultado=mysqli_query($con, $sql);
+	};
+}else{
+	echo "ERROR: Las contraseñas no coinciden";
+};
+
+
+
+
+
+
+
+	echo $sql;
+	echo "<a href='modperfil.php'>Volver</a>";
 ?>
