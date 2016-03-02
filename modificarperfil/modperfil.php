@@ -1,18 +1,19 @@
 <html>
-<head></head>
+<head>
 <?php
 	session_start();
-			// include("conexion.php");
-			
+include("../conexion.proc.php");
 
-$con = mysqli_connect('localhost', 'root', '', 'bd_artistscorner');
+
+
 
 				$sql= "SELECT * FROM `tbl_usuario` WHERE id_Usuario = '$_SESSION[id]'";
 				$datos = mysqli_query($con, $sql);
 				$prod = mysqli_fetch_array($datos);
 
 ?>
-
+<script src="../js/val_registro.js"></script>
+</head>
 <body>
 	<form name="f1" action="modperfil.proc.php" method="post" onSubmit="return enviar;">
 		<table>
