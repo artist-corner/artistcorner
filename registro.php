@@ -1,5 +1,5 @@
 <script src="js/val_registro.js"></script>
-<form name="f1" action="registro.proc.php" method="post" onSubmit="return enviar;">
+<form name="f1" action="registro.proc.php" method="post" onSubmit="return enviar;" enctype="multipart/form-data">
 		<table>
 			<tr>
 				<td>Nombre: </td>
