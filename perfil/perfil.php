@@ -17,9 +17,9 @@
 <!-- Cambiar Conex -->
 		<?php
 		session_start();
-		$con = mysqli_connect('localhost', 'root', '', 'bd_artistscorner');
-		// include 'conexion.proc.php';
-		?>
+		// $con = mysqli_connect('localhost', 'root', '', 'bd_artistscorner');
+		include '../conexion.proc.php';
+?>
 		
 	</head>
 	<body>
@@ -31,7 +31,7 @@
 			$datos = mysqli_query($con, $sql);
 			$datos2 = mysqli_query($con, $sql2);
 			$prod = mysqli_fetch_array($datos);
-			?>
+		?>
 
 		<!-- Wrapper-->
 			<div id="wrapper">
@@ -43,7 +43,11 @@
 						<a href="#contact" class="icon fa-envelope"><span>Contacto</span></a>
 						<a href="#" class="icon fa-twitter"><span>Twitter</span></a>
 					</nav>
-
+					<?php
+					if(isset($_SESSION['id'])){
+						echo "<a href='../modificarperfil/modperfil.php'>Modificar mi perfil!</a>";
+					};
+					?>
 				<!-- Main -->
 					<div id="main">
 
