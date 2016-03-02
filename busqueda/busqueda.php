@@ -21,14 +21,10 @@
 
 		<?php
 		session_start();
-			// include("conexion.php");
+		include("../conexion.proc.php");
 			$seleccionBusqueda=$_REQUEST['seleccionBusqueda'];
 			$busqueda=$_REQUEST['busqueda'];
-			$con = mysqli_connect('localhost', 'root', '', 'bd_artistscorner');
-			if (!$con) {
-				echo "Error: No se puede conectar a la BD." . PHP_EOL;
-				exit;
-			};
+
 
 
 			if($busqueda != NULL){

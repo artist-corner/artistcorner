@@ -4,7 +4,6 @@
 	html5up.net | @n33co
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
-<?php session_start(); ?>
 <html>
 
 	<head>
@@ -19,7 +18,7 @@
 <!-- Cambiar Conex -->
 		<?php
 		session_start();
-		// $con = mysqli_connect('localhost', 'root', '', 'bd_artistscorner');
+
 		include '../conexion.proc.php';
 ?>
 		
