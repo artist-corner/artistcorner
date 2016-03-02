@@ -1,3 +1,4 @@
+<script src="js/val_registro.js"></script>
 <form name="f1" action="registro.proc.php" method="post" onSubmit="return enviar;">
 		<table>
 			<tr>
