@@ -37,38 +37,38 @@
 			    case 1:
 			        // echo "Todos";
 			        $sql = "SELECT tbl_usuario.* FROM tbl_usuario WHERE UPPER(usuario) LIKE UPPER('%$busqueda%') OR UPPER(nombre) LIKE UPPER('%$busqueda%') OR UPPER(apellido) LIKE UPPER('%$busqueda%') OR UPPER(mail) LIKE UPPER('%$busqueda%')  ORDER BY usuario desc limit 30" ;
-			        $sql2 = "SELECT tbl_obra.*, tbl_usuario.*, tbl_estilo_arte.*, tbl_arte.*, tbl_estilo.* FROM tbl_usuario INNER JOIN tbl_obra ON tbl_obra.id_Usuario=tbl_usuario.id_Usuario INNER JOIN tbl_estilo_arte ON tbl_obra.id_Estilo_Arte = tbl_estilo_arte.id_Estilo_Arte INNER JOIN tbl_arte ON tbl_estilo_arte.id_Arte = tbl_arte.id_Arte INNER JOIN tbl_estilo ON tbl_estilo_arte.id_Estilo = tbl_estilo.id_Estilo WHERE UPPER(usuario) LIKE UPPER('%$busqueda%') OR UPPER(tbl_obra.titulo) LIKE UPPER('%$busqueda%') OR UPPER(tbl_obra.archivo) LIKE UPPER('%$busqueda%') ORDER BY tbl_obra.titulo desc limit 30";
+			    $sql2 = "SELECT tbl_arte.*, tbl_estilo_arte.*, tbl_obra.*, tbl_usuario.*, tbl_estilo.* FROM tbl_arte INNER JOIN tbl_estilo_arte ON tbl_estilo_arte.id_Arte = tbl_arte.id_Arte INNER JOIN tbl_obra ON tbl_obra.id_Estilo_Arte = tbl_estilo_arte.id_Estilo_Arte INNER JOIN tbl_usuario ON tbl_usuario.id_Usuario = tbl_obra.id_Usuario INNER JOIN tbl_estilo ON tbl_estilo.id_Estilo =tbl_estilo_arte.id_Estilo WHERE UPPER(tbl_obra.titulo) LIKE UPPER('%$busqueda%') OR UPPER(tbl_usuario.nombre) LIKE UPPER('%$busqueda%') OR UPPER(tbl_estilo.Nombre_Estilo) LIKE UPPER('%$busqueda%') ORDER BY tbl_obra.titulo desc limit 30";
 			        $datos = mysqli_query($con, $sql);
 					$datos2 = mysqli_query($con, $sql2);
 			        break;
 			    case 2:
 			        // echo "Usuario";
-			        $sql = "SELECT tbl_usuario.* FROM tbl_usuario WHERE UPPER(usuario) LIKE UPPER('%$busqueda%') OR UPPER(nombre) LIKE UPPER('%$busqueda%') OR UPPER(apellido) LIKE UPPER('%$busqueda%') OR UPPER(mail) LIKE UPPER('%$busqueda%') OR UPPER(descripcionUser) LIKE UPPER('%$busqueda%') OR UPPER(imagen) LIKE UPPER('%$busqueda%') ORDER BY usuario desc";
+			        $sql = "SELECT tbl_usuario.* FROM tbl_usuario WHERE UPPER(usuario) LIKE UPPER('%$busqueda%') OR UPPER(nombre) LIKE UPPER('%$busqueda%') OR UPPER(apellido) LIKE UPPER('%$busqueda%') OR UPPER(mail) LIKE UPPER('%$busqueda%') ORDER BY usuario desc";
 			       	$datos = mysqli_query($con, $sql);
 			        break;
 			    case 3:
 			        // echo "Obras";
-			        $sql2 = "SELECT tbl_obra.*, tbl_usuario.*, tbl_estilo_arte.*, tbl_arte.*, tbl_estilo.* FROM tbl_arte INNER JOIN tbl_estilo_arte ON tbl_estilo_arte.id_Arte=tbl_arte.id_Arte INNER JOIN tbl_obra ON tbl_obra.id_Estilo_Arte = tbl_estilo_arte.id_Estilo_Arte INNER JOIN tbl_usuario ON tbl_usuario.id_Usuario= tbl_obra.id_Usuario INNER JOIN tbl_estilo ON tbl_estilo_arte.id_Estilo = tbl_estilo.id_Estilo WHERE UPPER(usuario) LIKE UPPER('%$busqueda%') OR UPPER(tbl_obra.titulo) LIKE UPPER('%$busqueda%') OR UPPER(Nombre_Estilo) LIKE UPPER('%$busqueda%')";
+			    $sql2 = "SELECT tbl_arte.*, tbl_estilo_arte.*, tbl_obra.*, tbl_usuario.*, tbl_estilo.* FROM tbl_arte INNER JOIN tbl_estilo_arte ON tbl_estilo_arte.id_Arte = tbl_arte.id_Arte INNER JOIN tbl_obra ON tbl_obra.id_Estilo_Arte = tbl_estilo_arte.id_Estilo_Arte INNER JOIN tbl_usuario ON tbl_usuario.id_Usuario = tbl_obra.id_Usuario INNER JOIN tbl_estilo ON tbl_estilo.id_Estilo =tbl_estilo_arte.id_Estilo WHERE UPPER(tbl_obra.titulo) LIKE UPPER('%$busqueda%') OR UPPER(tbl_usuario.usuario) LIKE UPPER('%$busqueda%') OR UPPER(tbl_estilo.Nombre_Estilo) LIKE UPPER('%$busqueda%')";
 			        $datos2 = mysqli_query($con, $sql2);
 			        break;
 			    case 4:
 			        // echo "Musica";
-			        $sql2 = "SELECT tbl_obra.*, tbl_estilo_arte.*, tbl_arte.*, tbl_usuario.nombre, tbl_estilo.* FROM tbl_arte INNER JOIN tbl_estilo_arte ON tbl_estilo_arte.id_Arte = tbl_arte.id_Arte INNER JOIN tbl_obra ON tbl_obra.id_Estilo_Arte = tbl_estilo_arte.id_Estilo_Arte INNER JOIN tbl_usuario ON tbl_usuario.id_Usuario = tbl_obra.id_Usuario INNER JOIN tbl_estilo ON tbl_estilo_arte.id_Estilo = tbl_estilo.id_Estilo WHERE tbl_arte.nombre_Arte = 'Musica' AND (UPPER(tbl_obra.titulo) LIKE UPPER('%$busqueda%') OR UPPER(tbl_usuario.nombre) LIKE UPPER('%$busqueda%') OR UPPER(tbl_estilo.Nombre_Estilo) LIKE UPPER('%$busqueda%'))";
+			    $sql2 = "SELECT tbl_arte.*, tbl_estilo_arte.*, tbl_obra.*, tbl_usuario.*, tbl_estilo.* FROM tbl_arte INNER JOIN tbl_estilo_arte ON tbl_estilo_arte.id_Arte = tbl_arte.id_Arte INNER JOIN tbl_obra ON tbl_obra.id_Estilo_Arte = tbl_estilo_arte.id_Estilo_Arte INNER JOIN tbl_usuario ON tbl_usuario.id_Usuario = tbl_obra.id_Usuario INNER JOIN tbl_estilo ON tbl_estilo.id_Estilo =tbl_estilo_arte.id_Estilo WHERE tbl_arte.id_Arte = '1' AND (UPPER(tbl_obra.titulo) LIKE UPPER('%$busqueda%') OR UPPER(tbl_usuario.usuario) LIKE UPPER('%$busqueda%') OR UPPER(tbl_estilo.Nombre_Estilo) LIKE UPPER('%$busqueda%'))";
 			        $datos2 = mysqli_query($con, $sql2);
 			        break;
 			    case 5:
 			        // echo "Imagen";
-			        $sql2 = "SELECT tbl_obra.*, tbl_estilo_arte.*, tbl_arte.*, tbl_usuario.nombre, tbl_estilo.* FROM tbl_arte INNER JOIN tbl_estilo_arte ON tbl_estilo_arte.id_Arte = tbl_arte.id_Arte INNER JOIN tbl_obra ON tbl_obra.id_Estilo_Arte = tbl_estilo_arte.id_Estilo_Arte INNER JOIN tbl_usuario ON tbl_usuario.id_Usuario = tbl_obra.id_Usuario INNER JOIN tbl_estilo ON tbl_estilo_arte.id_Estilo = tbl_estilo.id_Estilo WHERE tbl_arte.nombre_Arte = 'Imagen' AND (UPPER(tbl_obra.titulo) LIKE UPPER('%$busqueda%') OR UPPER(tbl_usuario.nombre) LIKE UPPER('%$busqueda%') OR UPPER(tbl_estilo.Nombre_Estilo) LIKE UPPER('%$busqueda%'))";
+			    $sql2 = "SELECT tbl_arte.*, tbl_estilo_arte.*, tbl_obra.*, tbl_usuario.*, tbl_estilo.* FROM tbl_arte INNER JOIN tbl_estilo_arte ON tbl_estilo_arte.id_Arte = tbl_arte.id_Arte INNER JOIN tbl_obra ON tbl_obra.id_Estilo_Arte = tbl_estilo_arte.id_Estilo_Arte INNER JOIN tbl_usuario ON tbl_usuario.id_Usuario = tbl_obra.id_Usuario INNER JOIN tbl_estilo ON tbl_estilo.id_Estilo =tbl_estilo_arte.id_Estilo WHERE tbl_arte.id_Arte = '2' AND (UPPER(tbl_obra.titulo) LIKE UPPER('%$busqueda%') OR UPPER(tbl_usuario.usuario) LIKE UPPER('%$busqueda%') OR UPPER(tbl_estilo.Nombre_Estilo) LIKE UPPER('%$busqueda%'))";
 			        $datos2 = mysqli_query($con, $sql2);
 			        break;
 			    case 6:
-			        // echo "Escritura";
-			        $sql2 = "SELECT tbl_obra.*, tbl_estilo_arte.*, tbl_arte.*, tbl_usuario.nombre, tbl_estilo.* FROM tbl_arte INNER JOIN tbl_estilo_arte ON tbl_estilo_arte.id_Arte = tbl_arte.id_Arte INNER JOIN tbl_obra ON tbl_obra.id_Estilo_Arte = tbl_estilo_arte.id_Estilo_Arte INNER JOIN tbl_usuario ON tbl_usuario.id_Usuario = tbl_obra.id_Usuario INNER JOIN tbl_estilo ON tbl_estilo_arte.id_Estilo = tbl_estilo.id_Estilo WHERE tbl_arte.nombre_Arte = 'Escritura' AND (UPPER(tbl_obra.titulo) LIKE UPPER('%$busqueda%') OR UPPER(tbl_usuario.nombre) LIKE UPPER('%$busqueda%') OR UPPER(tbl_estilo.Nombre_Estilo) LIKE UPPER('%$busqueda%'))";
+			        // echo "Video";
+			    $sql2 = "SELECT tbl_arte.*, tbl_estilo_arte.*, tbl_obra.*, tbl_usuario.*, tbl_estilo.* FROM tbl_arte INNER JOIN tbl_estilo_arte ON tbl_estilo_arte.id_Arte = tbl_arte.id_Arte INNER JOIN tbl_obra ON tbl_obra.id_Estilo_Arte = tbl_estilo_arte.id_Estilo_Arte INNER JOIN tbl_usuario ON tbl_usuario.id_Usuario = tbl_obra.id_Usuario INNER JOIN tbl_estilo ON tbl_estilo.id_Estilo =tbl_estilo_arte.id_Estilo WHERE tbl_arte.id_Arte = '3' AND (UPPER(tbl_obra.titulo) LIKE UPPER('%$busqueda%') OR UPPER(tbl_usuario.usuario) LIKE UPPER('%$busqueda%') OR UPPER(tbl_estilo.Nombre_Estilo) LIKE UPPER('%$busqueda%'))";
 			        $datos2 = mysqli_query($con, $sql2);
 			        break;
 			    case 7:
-			        // echo "video";
-			        $sql2 = "SELECT tbl_obra.*, tbl_estilo_arte.*, tbl_arte.*, tbl_usuario.nombre, tbl_estilo.* FROM tbl_arte INNER JOIN tbl_estilo_arte ON tbl_estilo_arte.id_Arte = tbl_arte.id_Arte INNER JOIN tbl_obra ON tbl_obra.id_Estilo_Arte = tbl_estilo_arte.id_Estilo_Arte INNER JOIN tbl_usuario ON tbl_usuario.id_Usuario = tbl_obra.id_Usuario INNER JOIN tbl_estilo ON tbl_estilo_arte.id_Estilo = tbl_estilo.id_Estilo WHERE tbl_arte.nombre_Arte = 'Video' AND (UPPER(tbl_obra.titulo) LIKE UPPER('%$busqueda%') OR UPPER(tbl_usuario.nombre) LIKE UPPER('%$busqueda%') OR UPPER(tbl_estilo.Nombre_Estilo) LIKE UPPER('%$busqueda%'))";
+			        // echo "Escritura";
+			    $sql2 = "SELECT tbl_arte.*, tbl_estilo_arte.*, tbl_obra.*, tbl_usuario.*, tbl_estilo.* FROM tbl_arte INNER JOIN tbl_estilo_arte ON tbl_estilo_arte.id_Arte = tbl_arte.id_Arte INNER JOIN tbl_obra ON tbl_obra.id_Estilo_Arte = tbl_estilo_arte.id_Estilo_Arte INNER JOIN tbl_usuario ON tbl_usuario.id_Usuario = tbl_obra.id_Usuario INNER JOIN tbl_estilo ON tbl_estilo.id_Estilo =tbl_estilo_arte.id_Estilo WHERE tbl_arte.id_Arte = '4' AND (UPPER(tbl_obra.titulo) LIKE UPPER('%$busqueda%') OR UPPER(tbl_usuario.usuario) LIKE UPPER('%$busqueda%') OR UPPER(tbl_estilo.Nombre_Estilo) LIKE UPPER('%$busqueda%'))";
 			        $datos2 = mysqli_query($con, $sql2);
 			        break;
 			    // case 8:
@@ -83,7 +83,7 @@
 			    case 1:
 			        // echo "Todos";
 			        $sql = "SELECT tbl_usuario.* FROM tbl_usuario ORDER BY usuario asc limit 30";
-			        $sql2 = "SELECT tbl_obra.*, tbl_usuario.*, tbl_estilo_arte.*, tbl_arte.* FROM tbl_obra INNER JOIN tbl_usuario ON tbl_obra.id_Usuario=tbl_usuario.id_Usuario INNER JOIN tbl_estilo_arte ON tbl_obra.id_Estilo_Arte = tbl_estilo_arte.id_Estilo_Arte INNER JOIN tbl_arte ON tbl_estilo_arte.id_Arte = tbl_arte.id_Arte ORDER BY tbl_obra.titulo asc limit 30";
+			        $sql2 = "SELECT tbl_arte.*, tbl_estilo_arte.*, tbl_obra.*, tbl_usuario.*, tbl_estilo.* FROM tbl_arte INNER JOIN tbl_estilo_arte ON tbl_estilo_arte.id_Arte = tbl_arte.id_Arte INNER JOIN tbl_obra ON tbl_obra.id_Estilo_Arte = tbl_estilo_arte.id_Estilo_Arte INNER JOIN tbl_usuario ON tbl_usuario.id_Usuario = tbl_obra.id_Usuario INNER JOIN tbl_estilo ON tbl_estilo.id_Estilo =tbl_estilo_arte.id_Estilo ORDER BY tbl_obra.titulo asc limit 30";
 			        $datos = mysqli_query($con, $sql);
 					$datos2 = mysqli_query($con, $sql2);
 			        break;
@@ -94,27 +94,27 @@
 			        break;
 			    case 3:
 			        // echo "Obras";
-			        $sql2 = "SELECT tbl_obra.*, tbl_usuario.*, tbl_estilo_arte.*, tbl_arte.* FROM tbl_obra INNER JOIN tbl_usuario ON tbl_obra.id_Usuario=tbl_usuario.id_Usuario INNER JOIN tbl_estilo_arte ON tbl_obra.id_Estilo_Arte = tbl_estilo_arte.id_Estilo_Arte INNER JOIN tbl_arte ON tbl_estilo_arte.id_Arte = tbl_arte.id_Arte ORDER BY RAND()";
+			    $sql2 = "SELECT tbl_arte.*, tbl_estilo_arte.*, tbl_obra.*, tbl_usuario.*, tbl_estilo.* FROM tbl_arte INNER JOIN tbl_estilo_arte ON tbl_estilo_arte.id_Arte = tbl_arte.id_Arte INNER JOIN tbl_obra ON tbl_obra.id_Estilo_Arte = tbl_estilo_arte.id_Estilo_Arte INNER JOIN tbl_usuario ON tbl_usuario.id_Usuario = tbl_obra.id_Usuario INNER JOIN tbl_estilo ON tbl_estilo.id_Estilo =tbl_estilo_arte.id_Estilo ORDER BY RAND()";
 			        $datos2 = mysqli_query($con, $sql2);
 			        break;
 			    case 4:
 			        // echo "Musica";
-			        $sql2 = "SELECT tbl_obra.*, tbl_usuario.*, tbl_estilo_arte.*, tbl_arte.* FROM tbl_obra INNER JOIN tbl_usuario ON tbl_obra.id_Usuario=tbl_usuario.id_Usuario INNER JOIN tbl_estilo_arte ON tbl_obra.id_Estilo_Arte = tbl_estilo_arte.id_Estilo_Arte INNER JOIN tbl_arte ON tbl_estilo_arte.id_Arte = tbl_arte.id_Arte WHERE tbl_arte.nombre_Arte = 'Musica' ORDER BY RAND()";
+			        $sql2 = "SELECT tbl_arte.*, tbl_estilo_arte.*, tbl_obra.*, tbl_usuario.*, tbl_estilo.* FROM tbl_arte INNER JOIN tbl_estilo_arte ON tbl_estilo_arte.id_Arte = tbl_arte.id_Arte INNER JOIN tbl_obra ON tbl_obra.id_Estilo_Arte = tbl_estilo_arte.id_Estilo_Arte INNER JOIN tbl_usuario ON tbl_usuario.id_Usuario = tbl_obra.id_Usuario INNER JOIN tbl_estilo ON tbl_estilo.id_Estilo =tbl_estilo_arte.id_Estilo WHERE tbl_arte.id_Arte = '1' ORDER BY RAND()";
 			        $datos2 = mysqli_query($con, $sql2);
 			        break;
 			    case 5:
 			        // echo "Imagen";
-			        $sql2 ="SELECT tbl_obra.*, tbl_usuario.*, tbl_estilo_arte.*, tbl_arte.* FROM tbl_obra INNER JOIN tbl_usuario ON tbl_obra.id_Usuario=tbl_usuario.id_Usuario INNER JOIN tbl_estilo_arte ON tbl_obra.id_Estilo_Arte = tbl_estilo_arte.id_Estilo_Arte INNER JOIN tbl_arte ON tbl_estilo_arte.id_Arte = tbl_arte.id_Arte WHERE tbl_arte.nombre_Arte = 'Imagen' ORDER BY RAND()";
+			        $sql2 = "SELECT tbl_arte.*, tbl_estilo_arte.*, tbl_obra.*, tbl_usuario.*, tbl_estilo.* FROM tbl_arte INNER JOIN tbl_estilo_arte ON tbl_estilo_arte.id_Arte = tbl_arte.id_Arte INNER JOIN tbl_obra ON tbl_obra.id_Estilo_Arte = tbl_estilo_arte.id_Estilo_Arte INNER JOIN tbl_usuario ON tbl_usuario.id_Usuario = tbl_obra.id_Usuario INNER JOIN tbl_estilo ON tbl_estilo.id_Estilo =tbl_estilo_arte.id_Estilo WHERE tbl_arte.id_Arte = '2' ORDER BY RAND()";
 			        $datos2 = mysqli_query($con, $sql2);
 			        break;
 			    case 6:
 			        // echo "Escritura";
-			        $sql2 ="SELECT tbl_obra.*, tbl_usuario.*, tbl_estilo_arte.*, tbl_arte.* FROM tbl_obra INNER JOIN tbl_usuario ON tbl_obra.id_Usuario=tbl_usuario.id_Usuario INNER JOIN tbl_estilo_arte ON tbl_obra.id_Estilo_Arte = tbl_estilo_arte.id_Estilo_Arte INNER JOIN tbl_arte ON tbl_estilo_arte.id_Arte = tbl_arte.id_Arte WHERE tbl_arte.nombre_Arte = 'Escritura' ORDER BY RAND()";
+			        $sql2 = "SELECT tbl_arte.*, tbl_estilo_arte.*, tbl_obra.*, tbl_usuario.*, tbl_estilo.* FROM tbl_arte INNER JOIN tbl_estilo_arte ON tbl_estilo_arte.id_Arte = tbl_arte.id_Arte INNER JOIN tbl_obra ON tbl_obra.id_Estilo_Arte = tbl_estilo_arte.id_Estilo_Arte INNER JOIN tbl_usuario ON tbl_usuario.id_Usuario = tbl_obra.id_Usuario INNER JOIN tbl_estilo ON tbl_estilo.id_Estilo =tbl_estilo_arte.id_Estilo WHERE tbl_arte.id_Arte = '3' ORDER BY RAND()";
 			        $datos2 = mysqli_query($con, $sql2);
 			        break;
 			    case 7:
 			        // echo "video";
-			        $sql2 ="SELECT tbl_obra.*, tbl_usuario.*, tbl_estilo_arte.*, tbl_arte.* FROM tbl_obra INNER JOIN tbl_usuario ON tbl_obra.id_Usuario=tbl_usuario.id_Usuario INNER JOIN tbl_estilo_arte ON tbl_obra.id_Estilo_Arte = tbl_estilo_arte.id_Estilo_Arte INNER JOIN tbl_arte ON tbl_estilo_arte.id_Arte = tbl_arte.id_Arte WHERE tbl_arte.nombre_Arte = 'Video' ORDER BY RAND()";
+			        $sql2 = "SELECT tbl_arte.*, tbl_estilo_arte.*, tbl_obra.*, tbl_usuario.*, tbl_estilo.* FROM tbl_arte INNER JOIN tbl_estilo_arte ON tbl_estilo_arte.id_Arte = tbl_arte.id_Arte INNER JOIN tbl_obra ON tbl_obra.id_Estilo_Arte = tbl_estilo_arte.id_Estilo_Arte INNER JOIN tbl_usuario ON tbl_usuario.id_Usuario = tbl_obra.id_Usuario INNER JOIN tbl_estilo ON tbl_estilo.id_Estilo =tbl_estilo_arte.id_Estilo WHERE tbl_arte.id_Arte = '4' ORDER BY RAND()";
 			        $datos2 = mysqli_query($con, $sql2);
 			        break;
 			    // case 8:
