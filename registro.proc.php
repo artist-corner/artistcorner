@@ -10,6 +10,7 @@
 		mkdir($carpeta_user, 0700);
 		mkdir($carpeta_img, 0700);
 		mkdir($carpeta_obras, 0700);
+		move_uploaded_file($_FILES["file"]["tmp_name"], "usuarios/".$_REQUEST['user']."/img\/".$_FILES["file"]["tmp_name"]);
 	}else{
     	die('Consulta no válida: ' . mysql_error());
 	}
