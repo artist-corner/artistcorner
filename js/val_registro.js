@@ -10,11 +10,11 @@ function valEmail(valor){
 function validar(){
 	enviar=false;
 	if(f1.pass.value==f1.repass.value){
-		if(f1.email.value!=""){
-			if(valEmail(f1.email.value)){
+		if(f1.mail.value!=""){
+			if(valEmail(f1.mail.value)){
 				enviar=true;
 			} else {
-				alert("El email " + f1.email.value + " es incorrecto.");
+				alert("El email " + f1.mail.value + " es incorrecto.");
 				enviar=false;
 			}
 		} else {
@@ -24,6 +24,7 @@ function validar(){
 	} else {
 		alert("Las contraseñas no coinciden");
 		enviar=false;
+		// alert(f1.mail.value);
 	}
 
 	return enviar;

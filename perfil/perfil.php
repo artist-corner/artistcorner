@@ -18,9 +18,10 @@
 
 <!-- Cambiar Conex -->
 		<?php
-		$con = mysqli_connect('localhost', 'root', '', 'bd_artistscorner');
-		// include 'conexion.proc.php';
-		?>
+		session_start();
+		// $con = mysqli_connect('localhost', 'root', '', 'bd_artistscorner');
+		include '../conexion.proc.php';
+?>
 		
 	</head>
 	<body>
@@ -32,7 +33,7 @@
 			$datos = mysqli_query($con, $sql);
 			$datos2 = mysqli_query($con, $sql2);
 			$prod = mysqli_fetch_array($datos);
-			?>
+		?>
 
 		<!-- Wrapper-->
 			<div id="wrapper">
@@ -44,7 +45,11 @@
 						<a href="#contact" class="icon fa-envelope"><span>Contacto</span></a>
 						<a href="#" class="icon fa-twitter"><span>Twitter</span></a>
 					</nav>
-
+					<?php
+					if(isset($_SESSION['id'])){
+						echo "<a href='../modificarperfil/modperfil.php'>Modificar mi perfil!</a>";
+					};
+					?>
 				<!-- Main -->
 					<div id="main">
 
@@ -54,12 +59,21 @@
 								<?php
 								echo "<h1>$prod[usuario]</h1>";
 								echo "<p>$prod[descripcionUser]</p>";	
+								$usercarp = "$prod[usuario]";
+								
+
 								?>
 								</header>
 								<a href="#work" class="jumplink pic">
 									<span class="arrow icon fa-chevron-right"><span>See my work</span></span>
 									<?php
-									echo "<img src='images/$prod[imagen]'' alt='' />";
+									if ($prod['imagen'] !== NULL){
+										$imagenUS = "$prod[imagen]";
+										echo "<img src='../usuarios/$usercarp/img/$imagenUS' alt='' />";
+									}else{
+										echo "<img src='../img/NoImageuser.png' alt='' />";
+									};
+									
 									?>
 								</a>
 							</article>
@@ -77,12 +91,13 @@
 									if(mysqli_num_rows($datos2)>0){
 
 										while ($prod2 = mysqli_fetch_array($datos2)){
+											$imagenObra = "$prod2[portada]";
 											echo "<div class='4u 12u$(mobile)'>";
-											if ("$prod2[portada]" == NULL) {
-												echo "<div><a href='obra.php?id_obra=$prod2[id_Obra]' class='image fit'><img src='images/imagen1.jpg' alt=''></a></div>";
+											if ("$imagenObra" == NULL) {
+												echo "<div><a href='../obra/obra.php?id_obra=$prod2[id_Obra]' class='image fit'><img src='images/imagen1.jpg' alt=''></a></div>";
 												
 											}else{
-											echo "<div><a href='obra.php?id_obra=$prod2[id_Obra]' class='image fit'><img src='images/$prod2[portada]' alt=''></a></div>";
+											echo "<div><a href='../obra/obra.php?id_obra=$prod2[id_Obra]' class='image fit'><img src='../img/NoImagework.png' alt=''></a></div>";
 											};
 											echo "<div class='piedeimagen'>$prod2[titulo] / $prod2[nombre_Arte]</div>";
 											echo "</div>";
@@ -99,18 +114,33 @@
 								<header>
 									<h2>Contact Me</h2>
 								</header>
+								
+								<?php
+									if (isset($_SESSION['id'])){
+										$myusuario = $_SESSION['usuario'];
+										$myemail = $_SESSION['mail'];
+
+								?>
+
 								<form action="http://artistscorner.esy.es/correo.php" method="Get">
 									<div>
 										<div class="row">
 											<div class="6u 12u$(mobile)">
-												<!-- sustituir por un valor fijo(nombre de usuario de la sesion),no modificable  -->
-												<input type="text" name="name" placeholder="Name" />
+
+											<?php
+												echo"<input type='text' name='name' placeholder='Name' value= '$myusuario' readonly/>";
+												?>
 											</div>
 											<div class="6u$ 12u$(mobile)">
-												<!-- correo del usuario que tenga la sesion iniciada (oculto) -->
-												<input type="text" name="emailOrigen" placeholder="Email" />
+<!-- correo del usuario que tenga la sesion iniciada (oculto) -->
+											<?php
+												echo"<input type='text' name='emailOrigen' placeholder='Email' value='$myemail' readonly/>";
+												?>
 											</div>
-											<!-- añadir valor oculto(correo del usuario del perfil) name="emailDestino" -->
+<!-- añadir valor oculto(correo del usuario del perfil) name="emailDestino" -->
+											<?php
+												echo"<input type='hidden' name='emailDestino' value='$prod[mail]'>";
+											?>
 											<div class="12u$">
 												<input type="text" name="subject" placeholder="Subject" />
 											</div>
@@ -123,6 +153,16 @@
 										</div>
 									</div>
 								</form>
+
+
+								<?php
+
+									}else{
+										echo"Inicie sesión para contactar con este usuario";};
+
+
+								?>
+
 							</article>
 
 					</div>

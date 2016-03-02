@@ -3,8 +3,8 @@
 	session_start();
 
 	//incluimos el fichero conexion.proc.php que realiza la conexión a MySQL
-	include("conexion.proc.php");
-
+	// include("conexion.proc.php");
+$con = mysqli_connect('localhost', 'root', '', 'bd_artistscorner');
 	//preparamos la consulta que intenta encontrar el usuario Y la contraseña introducidos
 	$sql = "SELECT * FROM tbl_usuario WHERE mail='$_REQUEST[mail]' AND pass='$_REQUEST[pass]'";
 	//ejecutamos la consulta
@@ -23,11 +23,13 @@
 		$_SESSION['usuario']=$datos_usuario['usuario'];
 
 		//redirigimos a la página principal
-		header("location: index.php");
+		echo "pene";
+		header("location: SeleccionPerfil.php");
 	} else {
 		//como no se ha encontrado la pareja de usuario y contraseña, redirigimos a la página index.php con un mensaje de error
 		$_SESSION['error']="Usuario y contraseña incorrectos";
-		header("location: index.php");
+		echo "putaaa";
+		// header("location: SeleccionPerfil.php");
 	}
 
 ?>
