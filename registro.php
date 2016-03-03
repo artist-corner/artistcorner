@@ -24,7 +24,7 @@
 
 <section id="four" class="wrapper alt style1">
 								<div class="inner">
-									<form name="f1" action="registro.proc.php" method="post" onSubmit="return enviar;">
+			<form name="f1" action="registro.proc.php" method="post" enctype="multipart/form-data" onSubmit="return enviar;">
 		<table>
 			<tr>
 				<td>Nombre: </td>

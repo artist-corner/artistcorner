@@ -12,7 +12,9 @@
 		mkdir($carpeta_img, 0700);
 		mkdir($carpeta_obras, 0700);
 		move_uploaded_file($_FILES["foto"]["tmp_name"], "usuarios/".$_REQUEST['user']."/img\/".$_FILES["foto"]["name"]);
+		header("location: index.php");
 	}else{
     	die('Consulta no válida: ' . mysql_error());
+    	header("location: index.php");
 	}
 ?>
