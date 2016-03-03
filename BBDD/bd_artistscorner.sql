@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-03-2016 a las 12:06:59
+-- Tiempo de generación: 03-03-2016 a las 13:08:53
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -49,8 +49,8 @@ CREATE TABLE IF NOT EXISTS `tbl_arte` (
 INSERT INTO `tbl_arte` (`id_Arte`, `nombre_Arte`) VALUES
 (1, 'Musica'),
 (2, 'Imagen'),
-(3, 'Video'),
-(4, 'Escritura');
+(3, 'Escritura'),
+(4, 'Video');
 
 -- --------------------------------------------------------
 
@@ -393,7 +393,7 @@ INSERT INTO `tbl_tipousuario` (`id_TipoUsuario`, `nombreTipousuario`, `descripci
 --
 -- Estructura de tabla para la tabla `tbl_usuario`
 --
--- Creación: 03-03-2016 a las 11:04:21
+-- Creación: 03-03-2016 a las 12:08:34
 --
 
 DROP TABLE IF EXISTS `tbl_usuario`;
@@ -407,7 +407,7 @@ CREATE TABLE IF NOT EXISTS `tbl_usuario` (
   `descripcionUser` text COLLATE utf8_bin,
   `imagen` varchar(100) COLLATE utf8_bin DEFAULT NULL,
   `id_TipoUsuario` int(11) DEFAULT '2',
-  `Estado` tinyint(1) DEFAULT NULL
+  `estado` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
@@ -420,7 +420,7 @@ CREATE TABLE IF NOT EXISTS `tbl_usuario` (
 -- Volcado de datos para la tabla `tbl_usuario`
 --
 
-INSERT INTO `tbl_usuario` (`id_Usuario`, `usuario`, `nombre`, `apellido`, `mail`, `pass`, `descripcionUser`, `imagen`, `id_TipoUsuario`, `Estado`) VALUES
+INSERT INTO `tbl_usuario` (`id_Usuario`, `usuario`, `nombre`, `apellido`, `mail`, `pass`, `descripcionUser`, `imagen`, `id_TipoUsuario`, `estado`) VALUES
 (1, 'Admin', 'Admin', NULL, '8706.joan23@fje.edu', '1234', NULL, NULL, 1, 1),
 (2, 'Jose', 'Jose Luis', 'Maseda', '33595.joan23@fje.edu', '1234', 'No se ni como pero hago dibujos de puta madre', 'perfiljose.jpg', 2, 1),
 (3, 'Alejan', 'Alejandro', 'Moreno', '96034.joan23@fje.edu', '1234', NULL, 'imagen1.jpg', 2, 1),

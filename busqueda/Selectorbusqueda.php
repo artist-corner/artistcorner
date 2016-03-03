@@ -9,8 +9,8 @@
    <option value="3">Obras</option>
    <option value="4">Musica</option> 
    <option value="5">Imagen</option> 
-   <option value="6">Video</option>
-   <option value="7">Escritura</option>
+   <option value="6">Escritura</option>
+   <option value="7">video</option>
 <!--    <option value="8">nada</option>  -->
 </select><br>
 Busqueda: <input type="text" name="busqueda"><br>
