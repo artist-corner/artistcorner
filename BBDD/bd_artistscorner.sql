@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-03-2016 a las 08:59:15
+-- Tiempo de generación: 03-03-2016 a las 12:06:59
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -29,7 +29,7 @@ USE `bd_artistscorner`;
 --
 -- Estructura de tabla para la tabla `tbl_arte`
 --
--- Creación: 29-02-2016 a las 19:46:00
+-- Creación: 03-03-2016 a las 10:58:51
 --
 
 DROP TABLE IF EXISTS `tbl_arte`;
@@ -57,7 +57,7 @@ INSERT INTO `tbl_arte` (`id_Arte`, `nombre_Arte`) VALUES
 --
 -- Estructura de tabla para la tabla `tbl_comentarioseventos`
 --
--- Creación: 29-02-2016 a las 19:46:00
+-- Creación: 03-03-2016 a las 10:58:51
 --
 
 DROP TABLE IF EXISTS `tbl_comentarioseventos`;
@@ -79,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `tbl_comentarioseventos` (
 --
 -- Estructura de tabla para la tabla `tbl_cometariosobra`
 --
--- Creación: 29-02-2016 a las 19:46:00
+-- Creación: 03-03-2016 a las 10:58:51
 --
 
 DROP TABLE IF EXISTS `tbl_cometariosobra`;
@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS `tbl_cometariosobra` (
 --
 -- Estructura de tabla para la tabla `tbl_estilo`
 --
--- Creación: 29-02-2016 a las 19:46:00
+-- Creación: 03-03-2016 a las 10:58:51
 --
 
 DROP TABLE IF EXISTS `tbl_estilo`;
@@ -160,7 +160,7 @@ INSERT INTO `tbl_estilo` (`id_Estilo`, `Nombre_Estilo`) VALUES
 --
 -- Estructura de tabla para la tabla `tbl_estilo_arte`
 --
--- Creación: 29-02-2016 a las 19:46:00
+-- Creación: 03-03-2016 a las 10:58:51
 --
 
 DROP TABLE IF EXISTS `tbl_estilo_arte`;
@@ -223,7 +223,7 @@ INSERT INTO `tbl_estilo_arte` (`id_Estilo_Arte`, `id_Arte`, `id_Estilo`) VALUES
 --
 -- Estructura de tabla para la tabla `tbl_eventos`
 --
--- Creación: 29-02-2016 a las 19:46:00
+-- Creación: 03-03-2016 a las 10:58:51
 --
 
 DROP TABLE IF EXISTS `tbl_eventos`;
@@ -247,7 +247,7 @@ CREATE TABLE IF NOT EXISTS `tbl_eventos` (
 --
 -- Estructura de tabla para la tabla `tbl_likes`
 --
--- Creación: 29-02-2016 a las 19:46:00
+-- Creación: 03-03-2016 a las 10:58:51
 --
 
 DROP TABLE IF EXISTS `tbl_likes`;
@@ -255,14 +255,12 @@ CREATE TABLE IF NOT EXISTS `tbl_likes` (
   `id_like` int(11) NOT NULL,
   `id_Obra` int(11) DEFAULT NULL,
   `usuario` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- RELACIONES PARA LA TABLA `tbl_likes`:
 --   `id_Obra`
 --       `tbl_obra` -> `id_Obra`
---   `usuario`
---       `tbl_usuario` -> `id_Usuario`
 --
 
 --
@@ -270,7 +268,7 @@ CREATE TABLE IF NOT EXISTS `tbl_likes` (
 --
 
 INSERT INTO `tbl_likes` (`id_like`, `id_Obra`, `usuario`) VALUES
-(1, 3, 3),
+(1, 3, NULL),
 (2, 5, NULL),
 (3, 3, NULL),
 (4, 3, NULL),
@@ -285,7 +283,7 @@ INSERT INTO `tbl_likes` (`id_like`, `id_Obra`, `usuario`) VALUES
 (13, 4, NULL),
 (14, 4, NULL),
 (15, 3, NULL),
-(16, 3, 3),
+(16, 3, NULL),
 (17, 4, NULL),
 (18, 3, NULL),
 (19, 8, NULL),
@@ -294,14 +292,15 @@ INSERT INTO `tbl_likes` (`id_like`, `id_Obra`, `usuario`) VALUES
 (22, 4, NULL),
 (23, 3, NULL),
 (24, 3, NULL),
-(25, 4, NULL);
+(25, 4, NULL),
+(26, 18, NULL);
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `tbl_obra`
 --
--- Creación: 29-02-2016 a las 19:46:00
+-- Creación: 03-03-2016 a las 10:58:51
 --
 
 DROP TABLE IF EXISTS `tbl_obra`;
@@ -315,12 +314,10 @@ CREATE TABLE IF NOT EXISTS `tbl_obra` (
   `portada` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `id_Estilo_Arte` int(11) DEFAULT NULL,
   `id_Usuario` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- RELACIONES PARA LA TABLA `tbl_obra`:
---   `id_Arte`
---       `tbl_arte` -> `id_Arte`
 --   `id_Estilo_Arte`
 --       `tbl_estilo_arte` -> `id_Estilo_Arte`
 --   `id_Usuario`
@@ -332,18 +329,23 @@ CREATE TABLE IF NOT EXISTS `tbl_obra` (
 --
 
 INSERT INTO `tbl_obra` (`id_Obra`, `titulo`, `num_Descargas`, `archivo`, `descripcion`, `fecha`, `portada`, `id_Estilo_Arte`, `id_Usuario`) VALUES
-(3, 'The Bridge', 124, 'cancion1.mp3', 'Canción "the Bridge" ', '2016-02-03', 'imagen1.jpg', 2, 2),
-(4, 'El cencerro', 124, 'imagen2.jpg', 'Con esta escultura he intentado plasmar el maltrato animal en las granjas modernas.', '2016-02-03', '', 2, 2),
+(3, 'The Bridge', 124, 'imagen1.jpg', 'Personaje del juego World of Warcfarft', '2016-02-03', 'imagen1.jpg', 2, 2),
+(4, 'El cencerro', 124, 'imagen2.jpg', 'Con esta escultura he intentado plasmar el maltrato animal en las granjas modernas.', '2016-02-03', 'imagen1.jpg', 2, 6),
 (5, 'El cencerro', 124, 'imagen2.jpg', 'Con esta escultura he intentado plasmar el maltrato animal en las granjas modernas.', '2016-02-03', 'imagen1.jpg', 2, 3),
-(8, 'algo', 0, '{9E80B24F-DBE8-39CA-9D1E-1BB089B6A728}.png', 'cosas', NULL, NULL, 2, 3),
-(12, 'algo', 0, '{1DF4BC30-2573-4D31-5AE9-A97B91A65B49}.png', 'red con portada', '2016-02-26', 'DEATH_NOTE_L_wallpaper-1-.jpg', 2, NULL);
+(8, 'algo', 0, '{9E80B24F-DBE8-39CA-9D1E-1BB089B6A728}.png', 'cosas', NULL, 'imagen2.jpg', 2, 3),
+(12, 'algo', 0, '{1DF4BC30-2573-4D31-5AE9-A97B91A65B49}.png', 'red con portada', '2016-02-26', 'DEATH_NOTE_L_wallpaper-1-.jpg', 2, NULL),
+(18, 'Artu4', 0, '{08F408E8-8A94-7E04-4889-34D7F98824CF}.png', '', '2016-03-02', '{24425295-35B9-3109-87AD-397E6B193DCB}.', 15, 12),
+(19, 'dfhdf', 0, '{310190A2-A53A-2491-1F55-FB5F197FEE16}.jpg', 'dfhsdf', '2016-03-02', '', 4, 12),
+(20, '123qwe', 0, '{AF8A5B0C-C958-68A0-D8B4-0A58A63F7853}.jpg', 'dfhdsf', '2016-03-02', NULL, 16, 12),
+(21, 'fdhsdf', 0, '{2D03F93B-B23C-21E1-E0C9-F3E15FDED0D7}.jpg', 'fdhdfh', '2016-03-02', '{52B38C69-4361-C82E-7EB5-A23E4E98B519}.jpg', 15, 12),
+(22, 'sdgsd', 0, '{9D1E4AA9-8818-FC2E-3441-E03D88DC14E9}.jpg', 'dcbgdfzhfgchj', '2016-03-02', 'NULL', 15, 12);
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `tbl_tagnube`
 --
--- Creación: 29-02-2016 a las 19:46:00
+-- Creación: 03-03-2016 a las 10:58:51
 --
 
 DROP TABLE IF EXISTS `tbl_tagnube`;
@@ -364,7 +366,7 @@ CREATE TABLE IF NOT EXISTS `tbl_tagnube` (
 --
 -- Estructura de tabla para la tabla `tbl_tipousuario`
 --
--- Creación: 29-02-2016 a las 19:46:00
+-- Creación: 03-03-2016 a las 10:58:51
 --
 
 DROP TABLE IF EXISTS `tbl_tipousuario`;
@@ -391,7 +393,7 @@ INSERT INTO `tbl_tipousuario` (`id_TipoUsuario`, `nombreTipousuario`, `descripci
 --
 -- Estructura de tabla para la tabla `tbl_usuario`
 --
--- Creación: 29-02-2016 a las 19:46:00
+-- Creación: 03-03-2016 a las 11:04:21
 --
 
 DROP TABLE IF EXISTS `tbl_usuario`;
@@ -404,8 +406,9 @@ CREATE TABLE IF NOT EXISTS `tbl_usuario` (
   `pass` varchar(15) COLLATE utf8_bin DEFAULT NULL,
   `descripcionUser` text COLLATE utf8_bin,
   `imagen` varchar(100) COLLATE utf8_bin DEFAULT NULL,
-  `id_TipoUsuario` int(11) DEFAULT '2'
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `id_TipoUsuario` int(11) DEFAULT '2',
+  `Estado` tinyint(1) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- RELACIONES PARA LA TABLA `tbl_usuario`:
@@ -417,12 +420,15 @@ CREATE TABLE IF NOT EXISTS `tbl_usuario` (
 -- Volcado de datos para la tabla `tbl_usuario`
 --
 
-INSERT INTO `tbl_usuario` (`id_Usuario`, `usuario`, `nombre`, `apellido`, `mail`, `pass`, `descripcionUser`, `imagen`, `id_TipoUsuario`) VALUES
-(1, 'Admin', 'Admin', NULL, '8706.joan23@fje.edu', '1234', NULL, NULL, 1),
-(2, 'Jose', 'Jose Luis', 'Maseda', '33595.joan23@fje.edu', '1234', NULL, 'imagen1.jpg', 2),
-(3, 'Alejan', 'Alejandro', 'Moreno', '96034.joan23@fje.edu', '1234', NULL, 'imagen1.jpg', 2),
-(4, 'Ronin', 'Eric', 'Sanchez', 'sanchezChertoEric@gmail.com', '1234', NULL, 'imagen1.jpg', 2),
-(6, 'elmanu19', 'manuel', 'perez sanchez', 'manu@gmail.com', '1234', NULL, '', 2);
+INSERT INTO `tbl_usuario` (`id_Usuario`, `usuario`, `nombre`, `apellido`, `mail`, `pass`, `descripcionUser`, `imagen`, `id_TipoUsuario`, `Estado`) VALUES
+(1, 'Admin', 'Admin', NULL, '8706.joan23@fje.edu', '1234', NULL, NULL, 1, 1),
+(2, 'Jose', 'Jose Luis', 'Maseda', '33595.joan23@fje.edu', '1234', 'No se ni como pero hago dibujos de puta madre', 'perfiljose.jpg', 2, 1),
+(3, 'Alejan', 'Alejandro', 'Moreno', '96034.joan23@fje.edu', '1234', NULL, 'imagen1.jpg', 2, 1),
+(4, 'Ronin', 'Eric', 'Sanchez', 'sanchezChertoEric@gmail.com', '1234', NULL, 'imagen1.jpg', 2, 1),
+(6, 'elmanu19', 'manuel', 'perez sanchez', 'manu@gmail.com', '1234', NULL, '', 2, 1),
+(8, 'LeandroGado', 'Leandro', 'Gado', 'leandrogado@gmail.com', '1234', 'estoy drogado', 'matthewfit.jpg', 2, 1),
+(12, 'mathewfit', 'Mateo', 'Hermosillas', 'mathewfit@gmail.com', '1234', 'fullbody', '', 2, 1),
+(14, 'felipecalamar', 'Felipe', 'Calamar', 'felipecalamar@gmail.com', '1234', 'soy un calamar y me llamo Felipe', 'hipster.png', 2, 1);
 
 --
 -- Índices para tablas volcadas
@@ -554,12 +560,12 @@ ALTER TABLE `tbl_eventos`
 -- AUTO_INCREMENT de la tabla `tbl_likes`
 --
 ALTER TABLE `tbl_likes`
-  MODIFY `id_like` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=26;
+  MODIFY `id_like` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT de la tabla `tbl_obra`
 --
 ALTER TABLE `tbl_obra`
-  MODIFY `id_Obra` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+  MODIFY `id_Obra` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT de la tabla `tbl_tagnube`
 --
@@ -574,7 +580,7 @@ ALTER TABLE `tbl_tipousuario`
 -- AUTO_INCREMENT de la tabla `tbl_usuario`
 --
 ALTER TABLE `tbl_usuario`
-  MODIFY `id_Usuario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;COMMIT;
+  MODIFY `id_Usuario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
