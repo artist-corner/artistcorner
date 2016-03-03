@@ -6,6 +6,9 @@
 -->
 <html>
 	<head>
+		<?php
+		include("conexion.proc.php");
+		?>
 		<title>Solid State by HTML5 UP</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -43,6 +46,29 @@
 					</nav>
 
 				<!-- Banner -->
+				
+										<!--$sql_obralike = "SELECT tbl_usuario.*, tbl_obra.*, tbl_estilo_arte.*, tbl_arte.*, tbl_likes.id_Obra, COUNT(tbl_likes.id_like) FROM tbl_usuario INNER JOIN tbl_obra ON tbl_usuario.id_Usuario = tbl_obra.id_Usuario INNER JOIN tbl_estilo_arte ON tbl_obra.id_Estilo_Arte = tbl_estilo_arte.id_Estilo_Arte INNER JOIN tbl_arte ON tbl_estilo_arte.id_Arte = tbl_arte.id_Arte INNER JOIN tbl_likes ON tbl_likes.id_Obra = tbl_obra.id_Obra GROUP BY tbl_likes.id_Obra ORDER BY COUNT(tbl_likes.id_like) DESC LIMIT 1";
+											$sql_like = mysqli_query($con, $sql_obralike);
+											$datoslike = mysqli_fetch_array($sql_like);
+											$usercarp = $datoslike['usuario'];
+											// echo $usercarp;
+											$imagenlike = $datoslike['archivo'];
+											// echo $imagenlike;
+											$descripobra = $datoslike['descripcion'];-->
+
+				<?php
+					$sql_info = "SELECT tbl_obra.*, tbl_usuario.*, tbl_estilo_arte.*, tbl_arte.*, tbl_estilo.* FROM tbl_obra 
+					INNER JOIN tbl_usuario ON tbl_usuario.id_Usuario=tbl_obra.id_Obra
+					INNER JOIN tbl_estilo_arte ON tbl_estilo_arte.id_Estilo_Arte=tbl_obra.id_Estilo_Arte
+					INNER JOIN tbl_arte ON tbl_estilo_arte.id_Arte=tbl_arte.id_Arte
+					INNER JOIN tbl_estilo ON tbl_estilo_arte.id_Estilo=tbl_estilo.id_Estilo
+					WHERE tbl_obra.id_Obra='$idObra'";
+					$sql_inf = mysqli_query($con, $sql_info);
+					$datos_inf = mysqli_fetch_array($sql_inf);
+					$obra = $datos_inf['titulo'];
+					$desc_obra = $datos_inf['descripcion'];
+					$estilo = ;
+				?>
 					<section id="banner" class="wrap">
 						<div class="inner">
 							<h2>nombre de la obra</h2>
