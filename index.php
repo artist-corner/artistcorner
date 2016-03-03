@@ -89,8 +89,12 @@
 										// echo $musiclike;
 
 										while ($musiclike = mysqli_fetch_array($sqlmusic_like)) {
+											if(!empty($musiclike['portada'])){
 											echo "<img src='usuarios/$musiclike[usuario]/obras/$musiclike[portada]' width='150' height='100'/>&nbsp";
 											// echo "$musiclike[usuario] - $musiclike[portada]<br>";
+											}else{
+												echo "<img src='img/sinPortada.jpg' width='150' height='100'/>&nbsp";
+											}
 										}
 
 										// echo "<img src='usuarios/$musicarp/obras/$musiclike' width='150' height='100'/>
@@ -112,8 +116,12 @@
 										// echo $musiclike;
 
 										while ($musiclike2 = mysqli_fetch_array($sqlmusic_like2)) {
+											if(!empty($musiclike2['portada'])){
 											echo "<img src='usuarios/$musiclike2[usuario]/obras/$musiclike2[portada]' width='150' height='100'/>&nbsp";
 											// echo "$musiclike[usuario] - $musiclike[portada]<br>";
+											}else{
+												echo "<img src='img/sinPortada.jpg' width='150' height='100'/>&nbsp";
+											}
 										}
 
 										// echo "<img src='usuarios/$musicarp/obras/$musiclike' width='150' height='100'/>
@@ -207,8 +215,12 @@
 										// echo $musiclike;
 
 										while ($literaturalike = mysqli_fetch_array($sqlliteratura_like)) {
+											if(!empty($literaturalike['portada'])){
 											echo "<img src='usuarios/$literaturalike[usuario]/obras/$literaturalike[portada]' width='150' height='100'/>&nbsp";
 											// echo "$musiclike[usuario] - $musiclike[portada]<br>";
+											}else{
+												echo "<img src='img/sinPortada.jpg' width='150' height='100'/>&nbsp";
+											}
 										}
 
 										// echo "<img src='usuarios/$musicarp/obras/$musiclike' width='150' height='100'/>
@@ -231,8 +243,12 @@
 										// echo $musiclike;
 
 										while ($literaturalike2 = mysqli_fetch_array($sqlliteratura_like2)) {
+											if(!empty($literaturalike['portada'])){
 											echo "<img src='usuarios/$literaturalike2[usuario]/obras/$literaturalike2[portada]' width='150' height='100'/>&nbsp";
 											// echo "$musiclike[usuario] - $musiclike[portada]<br>";
+											}else{
+												echo "<img src='img/sinPortada.jpg' width='150' height='100'/>&nbsp";
+											}
 										}
 
 										// echo "<img src='usuarios/$musicarp/obras/$musiclike' width='150' height='100'/>
@@ -315,9 +331,9 @@
 				<!-- Footer -->
 					<section id="footer">
 						<center>
-							<img src="img/redessociales/fb.png">
-							<img src="img/redessociales/tw.png">
-							<img src="img/redessociales/ins.png">
+							<a href="http://www.twitter.com/artistscorneres"><img src="img/redessociales/fb.png"></a>
+							<a href="http://www.facebook.com/artistscorneres"><img src="img/redessociales/tw.png">
+							<a href="http://www.instagram.com/artistscorneres"><img src="img/redessociales/ins.png">
 							<img src="img/redessociales/mail.png">
 							<br>
 							<a href="">HOME</a> | <a href="">ARTISTAS</a> | <a href="">OBRAS</a> | <a href="">AYUDA</a>
