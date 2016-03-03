@@ -57,6 +57,7 @@
 											$imagenlike = $datoslike['archivo'];
 											// echo $imagenlike;
 											$descripobra = $datoslike['descripcion'];
+											$obraid = $datoslike['id_Obra'];
 											
 											
 											echo "<a href='#' class='image'><img src='usuarios/$usercarp/obras/$imagenlike' alt='' width='400' height='250'/></a>";
@@ -65,7 +66,7 @@
 											echo $descripobra;
 											echo "<br/>";
 											
-											echo "<a href='#' class='special'>Ver más</a>";
+											echo "<a href='obra.php?art=$usercarp&arc=$obraid' class='special'>Ver más</a>";
 											?>
 										</article>
 										

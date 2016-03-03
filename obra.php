@@ -6,6 +6,12 @@
 -->
 <html>
 	<head>
+	<?php session_start(); ?>
+	<script type="text/javascript">
+		function error_likes(){
+			alert("Ya has votado");
+		}
+	</script>
 		<?php
 		include("conexion.proc.php");
 		?>
@@ -16,9 +22,27 @@
 		<link rel="stylesheet" href="assets/css/main-obra.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+
 	</head>
 	<body>
-
+		<?php
+			$sql_info = "SELECT tbl_obra.*, tbl_usuario.*, tbl_estilo_arte.*, tbl_arte.*, tbl_estilo.* FROM tbl_obra 
+							INNER JOIN tbl_usuario ON tbl_usuario.id_Usuario=tbl_obra.id_Usuario 
+							INNER JOIN tbl_estilo_arte ON tbl_obra.id_Estilo_Arte=tbl_estilo_arte.id_Estilo_Arte 
+							INNER JOIN tbl_arte ON tbl_estilo_arte.id_Arte=tbl_arte.id_Arte 
+							INNER JOIN tbl_estilo ON tbl_estilo_arte.id_Estilo=tbl_estilo.id_Estilo WHERE tbl_obra.id_Obra='$_REQUEST[arc]'";
+			$sql_inf = mysqli_query($con, $sql_info);
+			$datos_inf = mysqli_fetch_array($sql_inf);
+			$obra = $datos_inf['titulo'];
+			$desc_obra = $datos_inf['descripcion'];
+			$archivo = $datos_inf['archivo'];
+			$usuObra = $datos_inf['usuario'];
+			$a_portada = $datos_inf['portada'];
+			$sql_likes = "SELECT COUNT(id_like) FROM tbl_likes WHERE id_Obra='$_REQUEST[arc]'";
+			$sql_likes_inf = mysqli_query($con, $sql_likes);
+			$datos_inf_datos = mysqli_fetch_array($sql_likes_inf);
+			//$estilo = ;
+		?>
 		<!-- Page Wrapper -->
 			<div id="page-wrapper">
 
@@ -56,26 +80,44 @@
 											// echo $imagenlike;
 											$descripobra = $datoslike['descripcion'];-->
 
-				<?php
-					$sql_info = "SELECT tbl_obra.*, tbl_usuario.*, tbl_estilo_arte.*, tbl_arte.*, tbl_estilo.* FROM tbl_obra 
-					INNER JOIN tbl_usuario ON tbl_usuario.id_Usuario=tbl_obra.id_Obra
-					INNER JOIN tbl_estilo_arte ON tbl_estilo_arte.id_Estilo_Arte=tbl_obra.id_Estilo_Arte
-					INNER JOIN tbl_arte ON tbl_estilo_arte.id_Arte=tbl_arte.id_Arte
-					INNER JOIN tbl_estilo ON tbl_estilo_arte.id_Estilo=tbl_estilo.id_Estilo
-					WHERE tbl_obra.id_Obra='$idObra'";
-					$sql_inf = mysqli_query($con, $sql_info);
-					$datos_inf = mysqli_fetch_array($sql_inf);
-					$obra = $datos_inf['titulo'];
-					$desc_obra = $datos_inf['descripcion'];
-					$estilo = ;
-				?>
+				
 					<section id="banner" class="wrap">
 						<div class="inner">
-							<h2>nombre de la obra</h2>
-							<p>descripcion <a href="http://html5up.net">nombre del artista</a></p>
+						<?php
+							echo "<h2>".$obra."</h2></br>";
+							echo "<h3>Descripción:</h3><p>".$desc_obra."</p>";
+							echo "<h3>Autor:</h3><p>".$usuObra."</p>";
+							echo "<a href='usuarios/$usuObra/obras/$archivo' download><input type='button' value='Descargar'/></a></br>";
+							echo "Likes: ".$datos_inf_datos['COUNT(id_like)']."</br>";
+							echo "<a href='like.proc.php?art=$_REQUEST[art]&arc=$_REQUEST[arc]'>Me gusta</a>";
+							
+							//echo "<a href='usuarios/$usuObra/obras/$archivo' download>";
+							?>
 						</div>
 						<div class="img">
-						ofnfonfdfn
+						<?php
+							if($datos_inf['id_Arte']==1){
+								echo "<img src='usuarios/$usuObra/obras/$a_portada' height='400' width='500'> <br>";
+								echo "<center><audio controls height='100' width='100'>
+								   	<source src='usuarios/$usuObra/obras/$archivo' type='audio/mpeg'>
+								   	<source src='usuarios/$usuObra/obras/$archivo' type='audio/ogg'>
+								   	<embed height='50' width='100' src='usuarios/$usuObra/obras/$archivo'>
+								</audio></center>";
+							}else if($datos_inf['id_Arte']==2){
+								echo "<img src='usuarios/$usuObra/obras/$archivo' height='500' width='600'> <br>";
+							}else if($datos_inf['id_Arte']==4){
+								echo "<img src='usuarios/$usuObra/obras/$a_portada' height='400' width='500'> <br>";
+								echo "<video height='400' width='500' controls>
+									  <source src='usuarios/$usuObra/obras/$archivo' type='video/mp4'>
+									  <source src='usuarios/$usuObra/obras/$archivo' type='video/ogg'>
+									</video>";
+							}else if($datos_inf['id_Arte']==3){
+								$filename = "usuarios/".$usuObra."/obras/".$archivo;
+								echo $filename;
+								include("doc_reader.php");
+								
+							}
+						?>
 						</div>
 					</section>
 
@@ -92,3 +134,12 @@
 
 	</body>
 </html>
+<?php
+if(isset($_REQUEST['ya'])){
+?>
+	<script>
+		error_likes();
+	</script>
+<?php
+}
+?>
