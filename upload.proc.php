@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 function getGUID(){
     if (function_exists('com_create_guid')){
         return com_create_guid();
