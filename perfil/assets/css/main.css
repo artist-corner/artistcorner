@@ -8,6 +8,15 @@
 */
 
 /* Reset */
+	#me{
+		background-color: #bfbfbf;
+	}
+	#contact{
+		background-color: #bfbfbf;
+	}
+	#work{
+		background-color: #bfbfbf;
+	}
 	#piedeimagen{
 		float: bottom;
 	}
@@ -752,8 +761,8 @@
 /* Basic */
 
 	body {
-		background-image: url("images/overlay.png"), url("images/bg.jpg");
-		background-repeat: repeat, no-repeat;
+/*		background-image: url("images/overlay.png"), url("images/bg.jpg");
+		background-repeat: repeat, no-repeat;*/
 		background-size: auto, 100% 100%;
 		font-family: 'Source Sans Pro', sans-serif;
 		font-weight: 300;
@@ -922,11 +931,14 @@
 		.image img {
 			display: block;
 			width: 100%;
+			height: 190px;
 		}
 
 		.image.fit {
 			display: block;
 			width: 100%;
+			height: 190px;
+
 		}
 
 		.image.featured {
@@ -1150,6 +1162,7 @@
 			}
 
 			body {
+				background-color: #999999;
 				width: 100%;
 				min-width: 1000px;
 				min-height: 100%;
@@ -1347,6 +1360,8 @@
 			}
 
 				#me .pic {
+					width: 300px;
+						
 					display: block;
 					position: absolute;
 					right: -1px;
@@ -1408,19 +1423,20 @@
 				}
 
 					#me header > h1 {
+						top: 5%;
 						position: absolute;
 						left: 0;
-						bottom: 52.5%;
 						margin: 0;
 					}
 
 					#me header > p {
 						position: absolute;
 						left: 0;
-						top: 52.5%;
+						top: 15%;
 						font-size: 1.5em;
 						letter-spacing: -0.015em;
 						margin-top: 0;
+						width: 60%;
 					}
 
 		/* Footer */
