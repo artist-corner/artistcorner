@@ -45,7 +45,9 @@
 						<a href="#" class="icon fa-twitter"><span>Twitter</span></a>
 					</nav>
 					<?php
-					if(isset($_SESSION['id'])){
+//Boton Modificar perfil
+					if(isset($_SESSION['id'])&&$_SESSION['id']==$prod['id_Usuario']){
+
 						echo "<a href='../modificarperfil/modperfil.php'>Modificar mi perfil!</a>";
 					};
 					?>
@@ -87,11 +89,16 @@
 								<section>
 									<div class="row">
 									<?php
+									
 									if(mysqli_num_rows($datos2)>0){
-
+											
 										while ($prod2 = mysqli_fetch_array($datos2)){
 											$imagenObra = "$prod2[portada]";
 											echo "<div class='4u 12u$(mobile)'>";
+//Eliminar obra
+												if(isset($_SESSION['id'])&&$_SESSION['id']==$prod['id_Usuario']){
+													echo "<a href='eliminarobra.proc.php?idobra=$prod2[id_Obra]&id=$prod[id_Usuario]'>Eliminar</a>";
+												};
 											if ("$imagenObra" == NULL) {
 												echo "<div><a href='../obra/obra.php?id_obra=$prod2[id_Obra]' class='image fit'><img src='images/imagen1.jpg' alt=''></a></div>";
 												
