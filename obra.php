@@ -108,11 +108,11 @@
 							echo "<h3>Descripción:</h3><p>".$desc_obra."</p>";
 							echo "<a href='perfil/perfil.php?art=$id_usu'><h3>Autor:</h3><p>".$usuObra."</p></a>";
 							echo "<a href='usuarios/$usuObra/obras/$archivo' download><input type='button' value='Descargar'/></a></br>";
-							echo "Likes: ".$datos_inf_datos['COUNT(id_like)']."</br>";
 							echo "<a href='like.proc.php?art=$_REQUEST[art]&arc=$_REQUEST[arc]'><img src='img/like.png'></a>";
-							
+							echo $datos_inf_datos['COUNT(id_like)'];
 							//echo "<a href='usuarios/$usuObra/obras/$archivo' download>";
 							?>
+							</br><a href="../index.php">Volver</a>
 						</div>
 						<div class="img">
 						<?php
@@ -137,8 +137,10 @@
 								
 							}
 						?>
+
 						</div>
 					</section>
+
 
 
 			</div>
